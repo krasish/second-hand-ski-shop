@@ -36,6 +36,7 @@
         "description": "Not too bad of ski boots",
         "size": 27.5,
         "flexIndex": 80,
+        "year": 2019,
         "model": "HI-SPEED PRO 100 MV",
         "price": 200,
         "condition": 8,
