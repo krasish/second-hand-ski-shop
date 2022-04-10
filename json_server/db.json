@@ -1,0 +1,47 @@
+{
+    "ski": [
+        {
+            "id": 1,
+            "manufacturer": "Rossignol",
+            "description": "Not too bad of a ski",
+            "size": 165,
+            "year": 2020,
+            "model": "Pursuit 500",
+            "skill": "Intermediate",
+            "price": 500,
+            "condition": 8,
+            "photos": [
+                "https://i.sportisimo.com/products/images/1170/1170081/full/rossignol-rrh06bl-pursuit-500-ltd-ca-nx-12-konect-dual_4.jpg"
+            ]
+        },
+        {
+            "id": 2,
+            "manufacturer": "Atomic",
+            "description": "Skis for advanced skiers. Not in a good condition",
+            "size": 173,
+            "year": 2019,
+            "model": "Redster S9",
+            "skill": "Advanced",
+            "price": 500,
+            "condition": 5,
+            "photos": [
+                "https://i.ebayimg.com/images/g/WBwAAOSwnFtfNTCZ/s-l400.jpg"
+            ]
+        }
+    ],
+    "boots": [
+      {
+        "id": 1,
+        "manufacturer": "Rossignol",
+        "description": "Not too bad of ski boots",
+        "size": 27.5,
+        "flexIndex": 80,
+        "model": "HI-SPEED PRO 100 MV",
+        "price": 200,
+        "condition": 8,
+        "photos": [
+            "https://www.rossignol.com/media/catalog/product/r/b/rbl2090_hi_speed_pro_100_mv_rgb72dpi_01.jpg?width=585&height=585&canvas=585,585&optimize=high&bg-color=255,255,255&fit=bounds"
+        ]
+    }
+    ]
+}
