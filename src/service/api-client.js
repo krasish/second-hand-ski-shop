@@ -7,7 +7,7 @@ class ApiClient {
   }
 
   async fetchSkis() {
-    return this.fetchHandleResponse(async () =>
+    return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_PATH}`)
     );
   }

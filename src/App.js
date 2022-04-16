@@ -1,14 +1,8 @@
-import { useState } from "react";
-import logo from "./logo.svg";
-import { Button } from "@mui/material";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-  const [ski, setSki] = useState([]);
-  const [messages, setMessages] = useState();
-  const [errors, setErrors] = useState();
-
-  return <div>hello world </div>;
+  return <Home />;
 }
 
 export default App;
