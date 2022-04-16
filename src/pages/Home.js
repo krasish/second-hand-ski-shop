@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ApiClient from "../service/api-client";
+import Box from "@mui/system/Box";
+import SkiAppBar from "../components/SkiAppBar.js";
+import Copyright from "../components/Copyright";
 
 function Home(props) {
   const [ski, setSki] = useState([]);
@@ -20,14 +23,18 @@ function Home(props) {
   }, []);
 
   return (
-    <div>
-      Skis:
-      {ski.map((s) => (
-        <p>{JSON.stringify(s)}</p>
-      ))}
-      <br />
-      Errors: {errors.toString()}
-    </div>
+    <>
+      <SkiAppBar />
+      <Box>
+        Skis:
+        {ski.map((s) => (
+          <p key={s.id}>{JSON.stringify(s)}</p>
+        ))}
+        <br />
+        Errors: {errors.toString()}
+      </Box>
+      <Copyright />
+    </>
   );
 }
 
