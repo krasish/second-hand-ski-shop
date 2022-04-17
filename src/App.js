@@ -1,8 +1,8 @@
 import { CssBaseline } from "@mui/material";
 import React from "react";
 import SkiAppBar from "./components/SkiAppBar.js";
-import { green, purple } from "@mui/material/colors";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import theme from "./theme.js";
 import Home from "./pages/Home.js";
 
 const pages = [
@@ -14,17 +14,6 @@ const pages = [
 ];
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: green[500],
-    },
-  },
-});
 
 function App() {
   return (
