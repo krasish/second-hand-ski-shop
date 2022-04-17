@@ -24,7 +24,7 @@ export default function SkiAppBar({ pages, settings }) {
 
   return (
     <AppBar position="static" elevation={3}>
-      <Container maxWidth="xl">
+      <Container maxWidth="false">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -35,7 +35,12 @@ export default function SkiAppBar({ pages, settings }) {
             Second-Hand Ski Shop
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <BasicMenu page={page} />
             ))}
