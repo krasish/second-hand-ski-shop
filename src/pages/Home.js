@@ -5,6 +5,16 @@ import Box from "@mui/system/Box";
 import SkiAppBar from "../components/SkiAppBar.js";
 import Copyright from "../components/Copyright";
 
+const pages = [
+  { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
+  {
+    title: "Ski Boots",
+    subpages: ["Men Ski Boots", "Women Ski Boots", "Kids Ski Boots"],
+  },
+];
+
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
 function Home(props) {
   const [ski, setSki] = useState([]);
   const [errors, setErrors] = useState([]);
@@ -24,7 +34,7 @@ function Home(props) {
 
   return (
     <>
-      <SkiAppBar />
+      <SkiAppBar settings={settings} pages={pages} />
       <Box>
         Skis:
         {ski.map((s) => (

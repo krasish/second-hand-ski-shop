@@ -1,52 +1,80 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import GlobalStyles from "@mui/material/GlobalStyles";
+import Menu from "@mui/material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import BasicMenu from "./BasicMenu";
 
-export default function SkiAppBar() {
+export default function SkiAppBar({ pages, settings }) {
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   return (
-    <React.Fragment>
-      <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
-      />
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-      >
-        <Toolbar sx={{ flexWrap: "wrap" }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Second Hand Ski Shop
+    <AppBar position="static" elevation={3}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+          >
+            Second-Hand Ski Shop
           </Typography>
-          <nav>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {pages.map((page) => (
+              <BasicMenu page={page} />
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://media-exp1.licdn.com/dms/image/C4E03AQEuBif2WzVHpw/profile-displayphoto-shrink_800_800/0/1648132247227?e=1655942400&v=beta&t=3VhqQksmIVJUBR82hQ86f9hT_MBabMHHDoP8LaInVWM"
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
             >
-              Skis
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Ski Boots
-            </Link>
-          </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
         </Toolbar>
-      </AppBar>
-    </React.Fragment>
+      </Container>
+    </AppBar>
   );
 }
