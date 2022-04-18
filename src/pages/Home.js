@@ -6,8 +6,6 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ProductAlbum from "../components/ProductAlbum";
-import SkiAppBar from "../components/SkiAppBar";
-import { Outlet } from "react-router-dom";
 
 function Home({ settings, pages }) {
   const [ski, setSki] = useState([]);
@@ -29,9 +27,6 @@ function Home({ settings, pages }) {
   return (
     <>
       <main>
-        <SkiAppBar settings={settings} pages={pages} />
-        <Outlet />
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: "background.paper",

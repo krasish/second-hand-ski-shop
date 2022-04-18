@@ -5,6 +5,8 @@ import theme from "./theme.js";
 import Home from "./pages/Home.js";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound.js";
+import Catalog from "./pages/Catalog.js";
+import Baseline from "./components/Baseline.js";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -24,8 +26,11 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home settings={settings} pages={pages} />}
-          />
+            element={<Baseline settings={settings} pages={pages} />}
+          >
+            <Route path="/" element={<Home />}></Route>
+            <Route path="catalog" element={<Catalog></Catalog>}></Route>
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>

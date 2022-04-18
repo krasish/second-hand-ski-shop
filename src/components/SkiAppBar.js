@@ -42,7 +42,7 @@ export default function SkiAppBar({ pages, settings }) {
             }}
           >
             {pages.map((page) => (
-              <BasicMenu page={page} />
+              <BasicMenu key={page.title} page={page} />
             ))}
           </Box>
 

@@ -37,7 +37,9 @@ export default function BasicMenu({ page }) {
         }}
       >
         {page.subpages.map((sp) => (
-          <MenuItem onClick={handleClose}>{sp}</MenuItem>
+          <MenuItem key={sp} onClick={handleClose}>
+            {sp}
+          </MenuItem>
         ))}
       </Menu>
     </div>
