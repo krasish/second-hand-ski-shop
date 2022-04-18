@@ -1,9 +1,10 @@
 import { CssBaseline } from "@mui/material";
 import React from "react";
-import SkiAppBar from "./components/SkiAppBar.js";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./theme.js";
 import Home from "./pages/Home.js";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "./components/NotFound.js";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -17,13 +18,18 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function App() {
   return (
-    <>
+    <React.Fragment>
+      <CssBaseline />
       <ThemeProvider theme={theme}>
-        <SkiAppBar settings={settings} pages={pages} />
-        <CssBaseline />
-        <Home />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home settings={settings} pages={pages} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </ThemeProvider>
-    </>
+    </React.Fragment>
   );
 }
 
