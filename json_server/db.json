@@ -27,6 +27,34 @@
             "photos": [
                 "https://i.ebayimg.com/images/g/WBwAAOSwnFtfNTCZ/s-l400.jpg"
             ]
+        },
+        {
+            "id": 3,
+            "manufacturer": "Atomic",
+            "description": "A very good choice for intermediate skiers. These skis will help you to improve your skiing.",
+            "size": 173,
+            "year": 2020,
+            "model": "Redster X9",
+            "skill": "Intermediate",
+            "price": 500,
+            "condition": 9,
+            "photos": [
+                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-image_625c7215c5279_1920x1920.jpeg?1650225703",
+                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720133de8_1920x1920.jpeg?1650225695",
+                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7201cc2bb_1920x1920.jpeg?1650225700"
+            ]
+        },
+        {
+            "id": 4,
+            "manufacturer": "Atomic",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque nulla ut nibh laoreet accumsan. Integer sagittis dolor ac magna semper scelerisque. Etiam eu eros auctor, fringilla neque et, ullamcorper ante. Sed facilisis quis dui ac tempor. Vivamus lacinia elit id justo vestibulum accumsan. Quisque a congue magna. Aenean blandit odio sit amet diam tempor dictum. Donec pulvinar erat sed felis consequat rutrum. Fusce aliquet nisi nibh, nec sollicitudin diam gravida non. Sed nisi augue, facilisis ac sodales viverra, bibendum at mauris. Nunc vehicula tristique tellus, sed feugiat erat consequat eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget suscipit mauris, elementum sagittis ante. Donec nulla erat, vestibulum et aliquam sit amet, pharetra et quam. In finibus id libero aliquet ornare. Integer nec ex ut libero consectetur sollicitudin.",
+            "size": 173,
+            "year": 2019,
+            "model": "Savor 3",
+            "skill": "Beginner",
+            "price": 150,
+            "condition": 1,
+            "photos": []
         }
     ],
     "boots": [

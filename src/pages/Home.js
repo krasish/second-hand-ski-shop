@@ -7,23 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ProductAlbum from "../components/ProductAlbum";
 
-function Home({ settings, pages }) {
-  const [ski, setSki] = useState([]);
-  const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    async function fetchSkis() {
-      try {
-        const response = await ApiClient.fetchSkis();
-        setSki(response);
-      } catch (error) {
-        setErrors(error);
-      }
-      // ...
-    }
-    fetchSkis();
-  }, []);
-
+function Home({ ski, settings, pages }) {
   return (
     <>
       <main>

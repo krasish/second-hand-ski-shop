@@ -1,5 +1,5 @@
 import { CssBaseline } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./theme.js";
 import Home from "./pages/Home.js";
@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound.js";
 import Catalog from "./pages/Catalog.js";
 import Baseline from "./components/Baseline.js";
+import Product from "./pages/Product.js";
+import ApiClient from "./service/api-client.js";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -19,6 +21,21 @@ const pages = [
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function App() {
+  const [ski, setSki] = useState([]);
+  const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    async function fetchSkis() {
+      try {
+        const response = await ApiClient.fetchSkis();
+        setSki(response);
+      } catch (error) {
+        setErrors(error);
+      }
+    }
+    fetchSkis();
+  }, []);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -28,8 +45,9 @@ function App() {
             path="/"
             element={<Baseline settings={settings} pages={pages} />}
           >
-            <Route path="/" element={<Home />}></Route>
-            <Route path="catalog" element={<Catalog></Catalog>}></Route>
+            <Route path="/" element={<Home ski={ski} />}></Route>
+            <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
+            <Route path="/catalog-ski/:skiId" element={<Product ski={ski} />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

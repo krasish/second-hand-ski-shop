@@ -24,7 +24,15 @@ function ProductAlbum({ products }) {
                 flexDirection: "column",
               }}
             >
-              <CardMedia component="img" image={p.photos[0]} alt="random" />
+              <CardMedia
+                component="img"
+                image={
+                  p.photos.length
+                    ? p.photos[0]
+                    : require("../resources/images/no_images.jpg")
+                }
+                alt={`Picture of ${p.manufacturer} ${p.model}`}
+              />
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {p.manufacturer} {p.model}
