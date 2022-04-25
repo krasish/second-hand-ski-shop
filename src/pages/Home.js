@@ -14,7 +14,7 @@ function Home({ ski, settings, pages }) {
           sx={{
             bgcolor: "background.paper",
             pt: 8,
-            pb: 6,
+            pb: 12,
           }}
         >
           <Container maxWidth="sm">
@@ -25,7 +25,7 @@ function Home({ ski, settings, pages }) {
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              Buy & Sell Ski Equipment Easily
             </Typography>
             <Typography
               variant="h5"
@@ -33,9 +33,8 @@ function Home({ ski, settings, pages }) {
               color="text.secondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Join our online platform to buy second-hand ski and ski-boots or
+              sell yours with just a few clicks.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -43,8 +42,8 @@ function Home({ ski, settings, pages }) {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button variant="contained">Register</Button>
+              <Button variant="outlined">Login </Button>
             </Stack>
           </Container>
           <ProductAlbum products={ski} />
