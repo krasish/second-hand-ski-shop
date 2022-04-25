@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./theme.js";
 import Home from "./pages/Home.js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./components/NotFound.js";
 import Catalog from "./pages/Catalog.js";
 import Baseline from "./components/Baseline.js";
