@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { display } from "@mui/system";
 import React from "react";
 import { useParams } from "react-router-dom";
+import DescriptionCard from "../components/DescriptionCard";
 import ImageModal from "../components/ImageModal";
 import NotFound from "../components/NotFound";
 import QuiltedImageList from "../components/QuiltedImageList";
@@ -42,16 +43,20 @@ function Product({ ski, ...rest }) {
               component="h2"
               variant="h3"
               color="text.secondary"
+              ml="12%"
               gutterBottom
             >
               {current.manufacturer} {current.model}
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item xs={12} md={6} align="center">
             <QuiltedImageList
               images={current.photos}
               openModal={handleModalOpen}
             ></QuiltedImageList>
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <DescriptionCard product={current}></DescriptionCard>
           </Grid>
         </Grid>
         <ImageModal
