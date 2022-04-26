@@ -4,7 +4,7 @@ import React from "react";
 function Catalog() {
   return (
     <React.Fragment>
-      <Typography>Ko staa</Typography>
+      <Typography>Zdrasti</Typography>
     </React.Fragment>
   );
 }
