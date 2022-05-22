@@ -17,10 +17,30 @@ import { DownhillSkiing } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 
 const pages = [
-  { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
+  {
+    title: "Ski",
+    subpages: [
+      { title: "Men Ski", toLocation: "/catalog-ski?category=men" },
+      { title: "Women Ski", toLocation: "/catalog-ski?category=women" },
+      { title: "Kids Ski", toLocation: "/catalog-ski?category=kids" },
+    ],
+  },
   {
     title: "Ski Boots",
-    subpages: ["Men Ski Boots", "Women Ski Boots", "Kids Ski Boots"],
+    subpages: [
+      { title: "Men Ski Boots", toLocation: "/catalog-ski-boots?category=men" },
+      {
+        title: "Women Ski Boots",
+        toLocation: "/catalog-ski-boots?category=women ",
+      },
+      {
+        title: "Kids Ski Boots",
+        toLocation: "/catalog-ski-boots?category=kids",
+      },
+    ],
+  },
+  {
+    title: "Users",
   },
 ];
 
@@ -137,9 +157,15 @@ export default function SkiAppBar({ onLogout }) {
               display: { xs: "flex", md: "flex" },
             }}
           >
-            {pages.map((page) => (
-              <BasicMenu key={page.title} page={page} />
-            ))}
+            {pages.map((page) =>
+              page.subpages ? (
+                <BasicMenu key={page.title} page={page} />
+              ) : (
+                <Button sx={{ color: "white" }} key={page.title}>
+                  {page.title}
+                </Button>
+              )
+            )}
           </Box>
           <UserContext.Consumer>
             {(value) => {
