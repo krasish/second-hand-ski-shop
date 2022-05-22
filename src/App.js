@@ -10,6 +10,7 @@ import Baseline from "./components/Baseline.js";
 import Product from "./pages/Product.js";
 import ApiClient from "./service/api-client.js";
 import SignUp from "./pages/SignUp.js";
+import SignIn from "./pages/SignIn.js";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -47,6 +48,7 @@ function App() {
             <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
             <Route path="/catalog-ski/:skiId" element={<Product ski={ski} />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
