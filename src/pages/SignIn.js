@@ -11,6 +11,7 @@ import React from "react";
 import * as yup from "yup";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useFormik } from "formik";
+import ApiClient from "../service/api-client";
 
 const schema = yup.object({
   username: yup.string().required("Username is required"),
@@ -24,8 +25,9 @@ function SignIn() {
       password: "",
     },
     validationSchema: schema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const user = await ApiClient.login(values.username, values.password);
+      console.log(user);
     },
   });
 

@@ -5,8 +5,11 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ProductAlbum from "../components/ProductAlbum";
+import { useNavigate } from "react-router-dom";
 
-function Home({ ski, settings, pages }) {
+function Home({ ski }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <main>
@@ -42,8 +45,12 @@ function Home({ ski, settings, pages }) {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Register</Button>
-              <Button variant="outlined">Login </Button>
+              <Button variant="contained" onClick={() => navigate("/signup")}>
+                Sign Up
+              </Button>
+              <Button variant="outlined" onClick={() => navigate("/signin")}>
+                Sign In{" "}
+              </Button>
             </Stack>
           </Container>
           <ProductAlbum products={ski} />

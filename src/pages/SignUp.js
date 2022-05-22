@@ -16,6 +16,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React from "react";
 import * as yup from "yup";
 import { GENDERS, GENDER_MALE, User } from "../model/user-model";
+import ApiClient from "../service/api-client";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   email: yup.string().email(),
@@ -46,7 +48,13 @@ const schema = yup.object({
   imageUrl: yup.string().url(),
 });
 
+const [MALE_DEFAULT_IMAGE, FEMALE_DEFAULT_IMAGE] = [
+  "https://as1.ftcdn.net/v2/jpg/01/40/46/18/1000_F_140461899_dvRngd7xvZtqCUHLiIyRjgflq2EmwnVP.jpg",
+  "https://s3.eu-central-1.amazonaws.com/uploads.mangoweb.org/shared-prod/visegradfund.org/uploads/2021/03/depositphotos_121233300-stock-illustration-female-default-avatar-gray-profile.jpg",
+];
+
 function SignUp() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -57,10 +65,20 @@ function SignUp() {
       imageUrl: "",
     },
     validationSchema: schema,
-    onSubmit: (values) => {
-      console.log(values);
-      const user = new User({ ...values });
-      console.log(user);
+    onSubmit: async (values) => {
+      const id = crypto.randomUUID();
+      const imageUrl =
+        values.imageUrl ||
+        (values.gender === GENDERS[GENDER_MALE]
+          ? MALE_DEFAULT_IMAGE
+          : FEMALE_DEFAULT_IMAGE);
+      const user = new User({ id: id, imageUrl: imageUrl, ...values });
+      try {
+        await ApiClient.createUser(user);
+        navigate("/signin");
+      } catch (error) {
+        alert(error);
+      }
     },
   });
 

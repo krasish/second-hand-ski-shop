@@ -1,9 +1,35 @@
 export const API_BASE_URL = "http://localhost:6969/api/";
 export const SKI_PATH = "ski/";
+export const USERS_PATH = "user/";
 
 class ApiClient {
   constructor(baseApiUrl = API_BASE_URL) {
     this.baseApiUrl = baseApiUrl;
+  }
+
+  POSTRequestFunction(path, body) {
+    return async () => {
+      fetch(`${this.baseApiUrl}${path}`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+    };
+  }
+
+  async createUser(user) {
+    return this.handleResponse(this.POSTRequestFunction(USERS_PATH, user));
+  }
+
+  async login(username, password) {
+    const users = await this.handleResponse(async () =>
+      fetch(
+        `${this.baseApiUrl}${USERS_PATH}?username=${username}&password=${password}`
+      )
+    );
+    return users ? users[0] : null;
   }
 
   async fetchSkis() {
@@ -16,15 +42,16 @@ class ApiClient {
   async handleResponse(ayncRequestFunction) {
     try {
       const resp = await ayncRequestFunction();
-      const content = await resp.json();
-      if (resp.status < 400) {
+      if (resp && resp.status < 400) {
+        const content = await resp.json();
+        console.log(content);
         console.log(
           `Successfult HTTP request [${resp.status}]: ${JSON.stringify(
             content
           )}`
         );
         return content;
-      } else {
+      } else if (resp) {
         const msg = `HTTP error ${resp.status}: ${JSON.stringify(resp)}`;
         console.log(msg);
         return Promise.reject(msg);

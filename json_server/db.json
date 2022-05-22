@@ -1,79 +1,92 @@
 {
-    "ski": [
-        {
-            "id": "c6a5939e-85df-43ab-9668-15b070a5de78",
-            "manufacturer": "Rossignol",
-            "description": "Not too bad of a ski",
-            "size": 165,
-            "year": 2020,
-            "model": "Pursuit 500",
-            "skill": "Intermediate",
-            "price": 500,
-            "condition": 8,
-            "photos": [
-                "https://i.sportisimo.com/products/images/1170/1170081/full/rossignol-rrh06bl-pursuit-500-ltd-ca-nx-12-konect-dual_4.jpg"
-            ]
-        },
-        {
-            "id": "9e8e88f4-86ef-448d-ae80-2b25f76d132b",
-            "manufacturer": "Atomic",
-            "description": "Skis for advanced skiers. Not in a good condition",
-            "size": 173,
-            "year": 2019,
-            "model": "Redster S9",
-            "skill": "Advanced",
-            "price": 500,
-            "condition": 5,
-            "photos": [
-                "https://i.ebayimg.com/images/g/WBwAAOSwnFtfNTCZ/s-l400.jpg"
-            ]
-        },
-        {
-            "id": "42bca69b-ebc2-4a86-b73d-f68272136469",
-            "manufacturer": "Atomic",
-            "description": "A very good choice for intermediate skiers. These skis will help you to improve your skiing.",
-            "size": 173,
-            "year": 2020,
-            "model": "Redster X9",
-            "skill": "Intermediate",
-            "price": 500,
-            "condition": 9,
-            "photos": [
-                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-image_625c7215c5279_1920x1920.jpeg?1650225703",
-                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720133de8_1920x1920.jpeg?1650225695",
-                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7201cc2bb_1920x1920.jpeg?1650225700",
-                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7202615f7_1920x1920.jpeg?1650225698", 
-                "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720304000_1920x1920.jpeg?1650225702"
-            ]
-        },
-        {
-            "id": "972f3cd3-62d0-48f4-9801-d69233e1e39b",
-            "manufacturer": "Atomic",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque nulla ut nibh laoreet accumsan. Integer sagittis dolor ac magna semper scelerisque. Etiam eu eros auctor, fringilla neque et, ullamcorper ante. Sed facilisis quis dui ac tempor. Vivamus lacinia elit id justo vestibulum accumsan. Quisque a congue magna. Aenean blandit odio sit amet diam tempor dictum. Donec pulvinar erat sed felis consequat rutrum. Fusce aliquet nisi nibh, nec sollicitudin diam gravida non. Sed nisi augue, facilisis ac sodales viverra, bibendum at mauris. Nunc vehicula tristique tellus, sed feugiat erat consequat eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget suscipit mauris, elementum sagittis ante. Donec nulla erat, vestibulum et aliquam sit amet, pharetra et quam. In finibus id libero aliquet ornare. Integer nec ex ut libero consectetur sollicitudin.",
-            "size": 173,
-            "year": 2019,
-            "model": "Savor 3",
-            "skill": "Beginner",
-            "price": 150,
-            "condition": 1,
-            "photos": []
-        }
-    ],
-    "boots": [
-      {
-        "id": "0dbc0933-ad09-4de6-9354-60cd6cfc0b94",
-        "manufacturer": "Rossignol",
-        "description": "Not too bad of ski boots",
-        "size": 27.5,
-        "flexIndex": 80,
-        "year": 2019,
-        "model": "HI-SPEED PRO 100 MV",
-        "price": 200,
-        "condition": 8,
-        "photos": [
-            "https://www.rossignol.com/media/catalog/product/r/b/rbl2090_hi_speed_pro_100_mv_rgb72dpi_01.jpg?width=585&height=585&canvas=585,585&optimize=high&bg-color=255,255,255&fit=bounds"
-        ]
+  "ski": [
+    {
+      "id": "c6a5939e-85df-43ab-9668-15b070a5de78",
+      "manufacturer": "Rossignol",
+      "description": "Not too bad of a ski",
+      "size": 165,
+      "year": 2020,
+      "model": "Pursuit 500",
+      "skill": "Intermediate",
+      "price": 500,
+      "condition": 8,
+      "photos": [
+        "https://i.sportisimo.com/products/images/1170/1170081/full/rossignol-rrh06bl-pursuit-500-ltd-ca-nx-12-konect-dual_4.jpg"
+      ]
+    },
+    {
+      "id": "9e8e88f4-86ef-448d-ae80-2b25f76d132b",
+      "manufacturer": "Atomic",
+      "description": "Skis for advanced skiers. Not in a good condition",
+      "size": 173,
+      "year": 2019,
+      "model": "Redster S9",
+      "skill": "Advanced",
+      "price": 500,
+      "condition": 5,
+      "photos": [
+        "https://i.ebayimg.com/images/g/WBwAAOSwnFtfNTCZ/s-l400.jpg"
+      ]
+    },
+    {
+      "id": "42bca69b-ebc2-4a86-b73d-f68272136469",
+      "manufacturer": "Atomic",
+      "description": "A very good choice for intermediate skiers. These skis will help you to improve your skiing.",
+      "size": 173,
+      "year": 2020,
+      "model": "Redster X9",
+      "skill": "Intermediate",
+      "price": 500,
+      "condition": 9,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-image_625c7215c5279_1920x1920.jpeg?1650225703",
+        "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720133de8_1920x1920.jpeg?1650225695",
+        "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7201cc2bb_1920x1920.jpeg?1650225700",
+        "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7202615f7_1920x1920.jpeg?1650225698",
+        "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720304000_1920x1920.jpeg?1650225702"
+      ]
+    },
+    {
+      "id": "972f3cd3-62d0-48f4-9801-d69233e1e39b",
+      "manufacturer": "Atomic",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque nulla ut nibh laoreet accumsan. Integer sagittis dolor ac magna semper scelerisque. Etiam eu eros auctor, fringilla neque et, ullamcorper ante. Sed facilisis quis dui ac tempor. Vivamus lacinia elit id justo vestibulum accumsan. Quisque a congue magna. Aenean blandit odio sit amet diam tempor dictum. Donec pulvinar erat sed felis consequat rutrum. Fusce aliquet nisi nibh, nec sollicitudin diam gravida non. Sed nisi augue, facilisis ac sodales viverra, bibendum at mauris. Nunc vehicula tristique tellus, sed feugiat erat consequat eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget suscipit mauris, elementum sagittis ante. Donec nulla erat, vestibulum et aliquam sit amet, pharetra et quam. In finibus id libero aliquet ornare. Integer nec ex ut libero consectetur sollicitudin.",
+      "size": 173,
+      "year": 2019,
+      "model": "Savor 3",
+      "skill": "Beginner",
+      "price": 150,
+      "condition": 1,
+      "photos": []
     }
-    ],
-    "users": []
+  ],
+  "boots": [
+    {
+      "id": "0dbc0933-ad09-4de6-9354-60cd6cfc0b94",
+      "manufacturer": "Rossignol",
+      "description": "Not too bad of ski boots",
+      "size": 27.5,
+      "flexIndex": 80,
+      "year": 2019,
+      "model": "HI-SPEED PRO 100 MV",
+      "price": 200,
+      "condition": 8,
+      "photos": [
+        "https://www.rossignol.com/media/catalog/product/r/b/rbl2090_hi_speed_pro_100_mv_rgb72dpi_01.jpg?width=585&height=585&canvas=585,585&optimize=high&bg-color=255,255,255&fit=bounds"
+      ]
+    }
+  ],
+  "user": [
+    {
+      "id": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "email": "krasishontov@gmail.com",
+      "firstName": "Krasimir",
+      "lastName": "Shontov",
+      "username": "krasi",
+      "password": "h0meWork!",
+      "imageUrl": "https://media-exp1.licdn.com/dms/image/C4E03AQEuBif2WzVHpw/profile-displayphoto-shrink_800_800/0/1648132247227?e=1655942400&v=beta&t=3VhqQksmIVJUBR82hQ86f9hT_MBabMHHDoP8LaInVWM",
+      "gender": "male",
+      "role": "user",
+      "active": true
+    }
+  ]
 }
