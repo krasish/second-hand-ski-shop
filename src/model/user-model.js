@@ -10,6 +10,7 @@ export const GENDERS = ["male", "female"];
 
 export class User {
   constructor({
+    id = "",
     email = "",
     firstName = "",
     lastName = "",
@@ -20,6 +21,7 @@ export class User {
     role = ROLES[REGULAR],
     active = true,
   }) {
+    this.id = id;
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;

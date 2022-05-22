@@ -3,7 +3,9 @@ import { SKILLS, SKILL_BEGINNER } from "./skill-model";
 export const DEFAULT_YEAR = 2000;
 
 export class Ski {
-  constructor(
+  constructor({
+    id = "",
+    userId = "",
     manufacturer = "",
     description = "",
     size = 0,
@@ -12,8 +14,10 @@ export class Ski {
     skill = SKILLS[SKILL_BEGINNER],
     price = 0.0,
     condition = 1,
-    photos = []
-  ) {
+    photos = [],
+  }) {
+    this.id = id;
+    this.userId = userId;
     this.manufacturer = manufacturer;
     this.description = description;
     this.size = size;
