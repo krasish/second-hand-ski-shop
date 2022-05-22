@@ -24,12 +24,20 @@ class ApiClient {
   }
 
   async login(username, password) {
-    const users = await this.handleResponse(async () =>
-      fetch(
-        `${this.baseApiUrl}${USERS_PATH}?username=${username}&password=${password}`
-      )
-    );
-    return users ? users[0] : null;
+    try {
+      const users = await this.handleResponse(async () =>
+        fetch(
+          `${this.baseApiUrl}${USERS_PATH}?username=${username}&password=${password}`
+        )
+      );
+      if (users && users.length) {
+        return users[0];
+      } else {
+        throw new Error("no such user");
+      }
+    } catch (err) {
+      return Promise.reject(`Login failed: ${err.message}`);
+    }
   }
 
   async fetchSkis() {

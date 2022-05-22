@@ -1,4 +1,5 @@
 import {
+  Alert,
   Avatar,
   Box,
   Button,
@@ -7,18 +8,26 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useFormik } from "formik";
 import ApiClient from "../service/api-client";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   username: yup.string().required("Username is required"),
   password: yup.string().required("Password is required"),
 });
 
-function SignIn() {
+function SignIn({ onSignIn }) {
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location?.state?.from?.pathname || "/";
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -26,8 +35,15 @@ function SignIn() {
     },
     validationSchema: schema,
     onSubmit: async (values) => {
-      const user = await ApiClient.login(values.username, values.password);
-      console.log(user);
+      try {
+        const user = await ApiClient.login(values.username, values.password);
+        console.log(`Succesfully logged user '${user.username}'`);
+        onSignIn(user);
+        navigate(from);
+      } catch (err) {
+        setAlertOpen(true);
+        setAlertMsg(err);
+      }
     },
   });
 
@@ -47,6 +63,20 @@ function SignIn() {
         <Typography component="h1" variant="h4" paddingBottom={5}>
           Sign In
         </Typography>
+
+        {alertOpen && (
+          <Alert
+            variant="standard"
+            severity="error"
+            onClose={() => setAlertOpen(false)}
+            sx={{
+              mb: 4,
+            }}
+          >
+            {alertMsg}
+          </Alert>
+        )}
+
         <Grid
           container
           spacing={2}

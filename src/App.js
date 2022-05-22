@@ -11,6 +11,7 @@ import Product from "./pages/Product.js";
 import ApiClient from "./service/api-client.js";
 import SignUp from "./pages/SignUp.js";
 import SignIn from "./pages/SignIn.js";
+import UserContext from "./components/UserContext";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -25,6 +26,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function App() {
   const [ski, setSki] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     async function fetchSkis() {
@@ -38,21 +40,33 @@ function App() {
     fetchSkis();
   }, []);
 
+  const setUserContext = (user) => {
+    setUser(user);
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route element={<Baseline settings={settings} pages={pages} />}>
-            <Route index element={<Home ski={ski} />}></Route>
-            <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
-            <Route path="/catalog-ski/:skiId" element={<Product ski={ski} />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </ThemeProvider>
+      <UserContext.Provider value={user}>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route element={<Baseline settings={settings} pages={pages} />}>
+              <Route index element={<Home ski={ski} />}></Route>
+              <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
+              <Route
+                path="/catalog-ski/:skiId"
+                element={<Product ski={ski} />}
+              />
+              <Route path="/signup" element={<SignUp />} />
+              <Route
+                path="/signin"
+                element={<SignIn onSignIn={setUserContext} />}
+              />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ThemeProvider>
+      </UserContext.Provider>
     </React.Fragment>
   );
 }
