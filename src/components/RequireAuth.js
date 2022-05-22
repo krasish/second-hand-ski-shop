@@ -8,7 +8,6 @@ function RequireAuth({ children, userID, requireAdmin = false }) {
   if (!user) {
     return <></>;
   }
-  console.log(user);
   const userIsAdmin = user.role === ROLES[ROLE_ADMIN];
 
   if (!userIsAdmin && userID && user.id !== userID) {

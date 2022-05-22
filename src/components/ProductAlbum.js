@@ -26,7 +26,7 @@ function ProductAlbum({ products }) {
       sx={{ mt: 4, py: 8, backgroundColor: "background.paper", boxShadow: 3 }}
       maxWidth="xl"
     >
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {products.map((p) => (
           <Grid item key={p.id} xs={12} sm={6} md={4} lg={3} xl={2}>
             <Card

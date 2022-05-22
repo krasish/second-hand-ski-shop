@@ -87,6 +87,18 @@
       "gender": "male",
       "role": "user",
       "active": true
+    },
+    {
+      "id": "bef8d123-29a5-4d7f-a981-9473ac68e8da",
+      "email": "misho_shamara@abv.bg",
+      "firstName": "Misho",
+      "lastName": "Shamara",
+      "username": "misho",
+      "password": "h0meWork!",
+      "imageUrl": "https://i.discogs.com/JUtekVS1Lv3Qw5SqE2d6krHrfeg05xyQnDQiNlRo4pg/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ3NzU0/MTgtMTQ3ODg3Nzg4/Ny03NTA0LmpwZWc.jpeg",
+      "gender": "male",
+      "role": "user",
+      "active": true
     }
   ]
 }
