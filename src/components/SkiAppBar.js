@@ -10,9 +10,28 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import BasicMenu from "./BasicMenu";
+import UserContext from "./UserContext";
+import { useNavigate } from "react-router-dom";
+import { Button, Link } from "@mui/material";
+import { DownhillSkiing } from "@mui/icons-material";
+import { Link as RouterLink } from "react-router-dom";
 
-export default function SkiAppBar({ pages, settings }) {
+const pages = [
+  { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
+  {
+    title: "Ski Boots",
+    subpages: ["Men Ski Boots", "Women Ski Boots", "Kids Ski Boots"],
+  },
+];
+
+function getAltForUser(user) {
+  return `${user?.firstName} ${user?.secondName}`;
+}
+
+export default function SkiAppBar({ onLogout }) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
+  const user = React.useContext(UserContext);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -22,18 +41,95 @@ export default function SkiAppBar({ pages, settings }) {
     setAnchorElUser(null);
   };
 
+  const handleToolbarButtonClick = (e) => {
+    const path = `/${e.target.innerText?.replace(/\s/g, "")?.toLowerCase()}`;
+    navigate(path);
+  };
+
+  const anonymousUserButtons = (
+    <>
+      <Button sx={{ color: "white" }} onClick={handleToolbarButtonClick}>
+        Sign In
+      </Button>
+      <Button sx={{ mx: 1, color: "white" }} onClick={handleToolbarButtonClick}>
+        Sign Up
+      </Button>
+    </>
+  );
+
+  const settings = [
+    {
+      title: "Profile",
+      action: () => {
+        navigate(`/users/${user?.id}`);
+        handleCloseUserMenu();
+      },
+    },
+    {
+      title: "Logout",
+      action: () => {
+        onLogout();
+        handleCloseUserMenu();
+      },
+    },
+  ];
+
+  const loggedUserTooltip = (user) => (
+    <Box sx={{ flexGrow: 0 }}>
+      <Tooltip title="Open settings">
+        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Avatar alt={getAltForUser(user)} src={user?.imageUrl} />
+        </IconButton>
+      </Tooltip>
+      <Menu
+        sx={{ mt: "45px" }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        {settings.map((setting) => (
+          <MenuItem key={setting.title} onClick={setting.action}>
+            <Typography textAlign="center">{setting.title}</Typography>
+          </MenuItem>
+        ))}
+      </Menu>
+    </Box>
+  );
+
   return (
     <AppBar position="static" elevation={3}>
       <Container maxWidth="false">
         <Toolbar disableGutters>
-          <Typography
+          <Link
             variant="h6"
             noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "#fff",
+              textDecoration: "none",
+            }}
           >
+            <DownhillSkiing
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            />
             Second-Hand Ski Shop
-          </Typography>
+          </Link>
 
           <Box
             sx={{
@@ -45,39 +141,11 @@ export default function SkiAppBar({ pages, settings }) {
               <BasicMenu key={page.title} page={page} />
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://media-exp1.licdn.com/dms/image/C4E03AQEuBif2WzVHpw/profile-displayphoto-shrink_800_800/0/1648132247227?e=1655942400&v=beta&t=3VhqQksmIVJUBR82hQ86f9hT_MBabMHHDoP8LaInVWM"
-                />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <UserContext.Consumer>
+            {(value) => {
+              return value ? loggedUserTooltip(value) : anonymousUserButtons;
+            }}
+          </UserContext.Consumer>
         </Toolbar>
       </Container>
     </AppBar>

@@ -2,10 +2,10 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import SkiAppBar from "./SkiAppBar";
 
-function Baseline({ settings, pages }) {
+function Baseline({ onLogout }) {
   return (
     <React.Fragment>
-      <SkiAppBar settings={settings} pages={pages} />
+      <SkiAppBar onLogout={onLogout} />
       <Outlet />
     </React.Fragment>
   );

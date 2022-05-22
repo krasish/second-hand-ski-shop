@@ -13,16 +13,6 @@ import SignUp from "./pages/SignUp.js";
 import SignIn from "./pages/SignIn.js";
 import UserContext from "./components/UserContext";
 
-const pages = [
-  { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
-  {
-    title: "Ski Boots",
-    subpages: ["Men Ski Boots", "Women Ski Boots", "Kids Ski Boots"],
-  },
-];
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 function App() {
   const [ski, setSki] = useState([]);
   const [errors, setErrors] = useState([]);
@@ -50,7 +40,7 @@ function App() {
       <UserContext.Provider value={user}>
         <ThemeProvider theme={theme}>
           <Routes>
-            <Route element={<Baseline settings={settings} pages={pages} />}>
+            <Route element={<Baseline onLogout={() => setUserContext(null)} />}>
               <Route index element={<Home ski={ski} />}></Route>
               <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
               <Route

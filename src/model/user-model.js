@@ -1,5 +1,5 @@
-export const REGULAR = 0;
-export const ADMIN = 1;
+export const ROLE_USER = 0;
+export const ROLE_ADMIN = 1;
 
 export const ROLES = ["user", "admin"];
 
@@ -18,7 +18,7 @@ export class User {
     password = "",
     imageUrl = "",
     gender = GENDERS[GENDER_MALE],
-    role = ROLES[REGULAR],
+    role = ROLES[ROLE_USER],
     active = true,
   }) {
     this.id = id;
