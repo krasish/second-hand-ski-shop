@@ -9,6 +9,7 @@ import Catalog from "./pages/Catalog.js";
 import Baseline from "./components/Baseline.js";
 import Product from "./pages/Product.js";
 import ApiClient from "./service/api-client.js";
+import SignUp from "./pages/SignUp.js";
 
 const pages = [
   { title: "Ski", subpages: ["Men Ski", "Women Ski", "Kids Ski"] },
@@ -41,13 +42,11 @@ function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route
-            path="/"
-            element={<Baseline settings={settings} pages={pages} />}
-          >
-            <Route path="/" element={<Home ski={ski} />}></Route>
+          <Route element={<Baseline settings={settings} pages={pages} />}>
+            <Route index element={<Home ski={ski} />}></Route>
             <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
             <Route path="/catalog-ski/:skiId" element={<Product ski={ski} />} />
+            <Route path="/signup" element={<SignUp />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
