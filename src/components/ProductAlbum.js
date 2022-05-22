@@ -12,7 +12,10 @@ import React from "react";
 
 function ProductAlbum({ products }) {
   return (
-    <Container sx={{ py: 8 }} maxWidth="xl">
+    <Container
+      sx={{ mt: 4, py: 8, backgroundColor: "background.paper", boxShadow: 3 }}
+      maxWidth="xl"
+    >
       {/* End hero unit */}
       <Grid container spacing={4}>
         {products.map((p) => (

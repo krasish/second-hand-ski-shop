@@ -15,7 +15,7 @@ function Home({ ski }) {
       <main>
         <Box
           sx={{
-            bgcolor: "background.paper",
+            bgcolor: "background.default",
             pt: 8,
             pb: 12,
           }}
