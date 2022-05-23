@@ -6,15 +6,30 @@ function DescriptionCard({ product }) {
     <React.Fragment>
       <Card>
         <CardContent>
-          <Typography>Manufacturer: {product.manufacturer}</Typography>
-          <Typography>Model: {product.model}</Typography>
-          <Typography>Size: {product.size}</Typography>
-          <Typography>Year: {product.year}</Typography>
-          <Typography>Skill: {product.skill}</Typography>
-          <Typography>Description:</Typography>
-          <Typography>{product.description}</Typography>
-          <Typography>Condition: {product.condition}</Typography>
-          <Typography>Price: {product.price}</Typography>
+          <Typography variant="subtitle1">
+            <b>Manufacturer:</b> {product.manufacturer}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Model:</b> {product.model}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Size:</b> {product.size}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Year:</b> {product.year}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Skill:</b> {product.skill}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Description:</b> {product.description}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Condition:</b> {product.condition}
+          </Typography>
+          <Typography variant="subtitle1">
+            <b>Price:</b> {product.price}
+          </Typography>
         </CardContent>
       </Card>
     </React.Fragment>

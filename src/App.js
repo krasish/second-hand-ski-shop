@@ -12,6 +12,7 @@ import ApiClient from "./service/api-client.js";
 import SignUp from "./pages/SignUp.js";
 import SignIn from "./pages/SignIn.js";
 import UserContext from "./components/UserContext";
+import AddProduct from "./pages/AddProduct.js";
 
 function App() {
   const [ski, setSki] = useState([]);
@@ -42,16 +43,17 @@ function App() {
           <Routes>
             <Route element={<Baseline onLogout={() => setUserContext(null)} />}>
               <Route index element={<Home ski={ski} />}></Route>
-              <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
-              <Route
-                path="/catalog-ski/:skiId"
-                element={<Product ski={ski} />}
-              />
               <Route path="/sign-up" element={<SignUp />} />
               <Route
                 path="/sign-in"
                 element={<SignIn onSignIn={setUserContext} />}
               />
+              <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
+              <Route
+                path="/catalog-ski/:skiId"
+                element={<Product ski={ski} />}
+              />
+              <Route path="add-product" element={<AddProduct />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

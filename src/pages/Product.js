@@ -23,19 +23,26 @@ function Product({ ski, ...rest }) {
   };
   const handleModalClose = () => setModalOpen(false);
 
-  const productIndex = parseInt(params.skiId);
+  const productIndex = params.skiId;
   const current = ski.find((s) => s.id === productIndex);
 
   return (
     <React.Fragment>
-      <Box pt={4} display="flex" justifyContent="center">
+      <Box
+        pt={4}
+        display="flex"
+        justifyContent="center"
+        sx={{ bgcolor: "background.default", pb: "25%" }}
+      >
         <Grid
           container
           spacing={2}
           sx={{
             align: "center",
-            bgcolor: "secondary.light",
+            bgcolor: "info.light",
             width: "95%",
+            pb: "10%",
+            boxShadow: 5,
           }}
         >
           <Grid item xs={12}>

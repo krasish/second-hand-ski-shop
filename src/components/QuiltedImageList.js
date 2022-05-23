@@ -13,7 +13,17 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 function QuiltedImageList({ images, openModal, size = 500, cols = 2 }) {
   return (
-    <ImageList sx={{ width: size, height: size }} variant="quilted" cols={cols}>
+    <ImageList
+      sx={{
+        width: size,
+        height: size,
+        boxShadow: 3,
+        bgcolor: "background.paper",
+        p: 1,
+      }}
+      variant="quilted"
+      cols={cols}
+    >
       {images.map((img) => (
         <ImageListItem key={img} cols={cols / 2} onClick={openModal}>
           <img
