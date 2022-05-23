@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Link } from "@mui/material";
 import { DownhillSkiing } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
+import RequireAuth from "./RequireAuth";
 
 const pages = [
   {
@@ -62,7 +63,7 @@ export default function SkiAppBar({ onLogout }) {
   };
 
   const handleToolbarButtonClick = (e) => {
-    const path = `/${e.target.innerText?.replace(/\s/g, "")?.toLowerCase()}`;
+    const path = `/${e.target.innerText?.replace(/\s/g, "-")?.toLowerCase()}`;
     navigate(path);
   };
 
@@ -161,11 +162,35 @@ export default function SkiAppBar({ onLogout }) {
               page.subpages ? (
                 <BasicMenu key={page.title} page={page} />
               ) : (
-                <Button sx={{ color: "white" }} key={page.title}>
+                <Button
+                  sx={{ color: "white" }}
+                  key={page.title}
+                  onClick={handleToolbarButtonClick}
+                >
                   {page.title}
                 </Button>
               )
             )}
+          </Box>
+          <Box
+            sx={{
+              mr: 3,
+              justifyContent: "flex-end",
+              display: { xs: "flex" },
+            }}
+          >
+            <RequireAuth>
+              <Button
+                sx={{
+                  backgroundColor: "lightgreen",
+                  color: "black",
+                  ":hover": { color: "white", background: "green" },
+                }}
+                onClick={handleToolbarButtonClick}
+              >
+                Add product
+              </Button>
+            </RequireAuth>
           </Box>
           <UserContext.Consumer>
             {(value) => {

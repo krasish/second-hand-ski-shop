@@ -11,6 +11,11 @@ import RequireNoAuth from "../components/RequireNoAuth";
 function Home({ ski }) {
   const navigate = useNavigate();
 
+  const handleToolbarButtonClick = (e) => {
+    const path = `/${e.target.innerText?.replace(/\s/g, "-")?.toLowerCase()}`;
+    navigate(path);
+  };
+
   return (
     <>
       <main>
@@ -54,10 +59,10 @@ function Home({ ski }) {
                 spacing={2}
                 justifyContent="center"
               >
-                <Button variant="contained" onClick={() => navigate("/signup")}>
+                <Button variant="contained" onClick={handleToolbarButtonClick}>
                   Sign Up
                 </Button>
-                <Button variant="outlined" onClick={() => navigate("/signin")}>
+                <Button variant="outlined" onClick={handleToolbarButtonClick}>
                   Sign In{" "}
                 </Button>
               </Stack>

@@ -47,9 +47,9 @@ function App() {
                 path="/catalog-ski/:skiId"
                 element={<Product ski={ski} />}
               />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/sign-up" element={<SignUp />} />
               <Route
-                path="/signin"
+                path="/sign-in"
                 element={<SignIn onSignIn={setUserContext} />}
               />
             </Route>
