@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ROLE_ADMIN, ROLES } from "../model/user-model";
+import { ROLE_ADMIN, ROLES } from "../model/user";
 import UserContext from "./UserContext";
 
 function RequireAuth({ children, userID, requireAdmin = false }) {

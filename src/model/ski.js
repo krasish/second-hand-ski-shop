@@ -1,4 +1,5 @@
-import { SKILLS, SKILL_BEGINNER } from "./skill-model";
+import { CATEGORIES, CATEGORY_MEN } from "./category";
+import { SKILLS, SKILL_BEGINNER } from "./skill";
 
 export const DEFAULT_YEAR = 2000;
 
@@ -9,6 +10,7 @@ export class Ski {
     manufacturer = "",
     description = "",
     size = 0,
+    category = CATEGORIES[CATEGORY_MEN],
     year = DEFAULT_YEAR,
     model = "",
     skill = SKILLS[SKILL_BEGINNER],
@@ -21,6 +23,7 @@ export class Ski {
     this.manufacturer = manufacturer;
     this.description = description;
     this.size = size;
+    this.category = category;
     this.year = year;
     this.model = model;
     this.skill = skill;
