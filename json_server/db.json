@@ -13,7 +13,8 @@
       "condition": 8,
       "photos": [
         "https://i.sportisimo.com/products/images/1170/1170081/full/rossignol-rrh06bl-pursuit-500-ltd-ca-nx-12-konect-dual_4.jpg"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 12:15:44 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "9e8e88f4-86ef-448d-ae80-2b25f76d132b",
@@ -28,7 +29,8 @@
       "condition": 5,
       "photos": [
         "https://i.ebayimg.com/images/g/WBwAAOSwnFtfNTCZ/s-l400.jpg"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 13:25:44 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "42bca69b-ebc2-4a86-b73d-f68272136469",
@@ -47,7 +49,8 @@
         "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7201cc2bb_1920x1920.jpeg?1650225700",
         "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c7202615f7_1920x1920.jpeg?1650225698",
         "https://cdncloudcart.com/16489/products/images/1175/atomic-redster-x9-s-625c720304000_1920x1920.jpeg?1650225702"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 14:26:04 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "972f3cd3-62d0-48f4-9801-d69233e1e39b",
@@ -60,7 +63,8 @@
       "skill": "beginner",
       "price": 150,
       "condition": 1,
-      "photos": []
+      "photos": [],
+      "createdAt": "Mon May 23 2022 14:32:13 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "516747e1-aea4-4f9d-b8d4-50f4573dbabf",
@@ -78,7 +82,8 @@
         "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd665199a0_1920x1920.jpeg?1612502648",
         "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd6ad67e8a_1920x1920.jpeg?1612502734",
         "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd68fb88b8_1920x1920.jpeg?1612502736"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 14:38:45 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "006ad78a-b7f6-4b0d-83eb-21adf1ea5f3e",
@@ -95,7 +100,8 @@
       "photos": [
         "https://cdncloudcart.com/16489/products/images/902/fischer-rc-one-72-mf-test-ski-image_6145b96d3a0a1_1920x1920.jpeg?1653147867",
         "https://cdncloudcart.com/16489/products/images/902/fischer-rc-one-72-mf-test-ski-image_6145b971774c8_1920x1920.jpeg?1653147867"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 15:38:40 GMT+0300 (Eastern European Summer Time)"
     }
   ],
   "boots": [
@@ -112,41 +118,8 @@
       "condition": 8,
       "photos": [
         "https://www.rossignol.com/media/catalog/product/r/b/rbl2090_hi_speed_pro_100_mv_rgb72dpi_01.jpg?width=585&height=585&canvas=585,585&optimize=high&bg-color=255,255,255&fit=bounds"
-      ]
-    },
-    {
-      "id": "b98021a9-6b1a-4641-9a83-567785d07b78",
-      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
-      "manufacturer": "Salomon",
-      "model": "X Lab+",
-      "description": "Brand new! ",
-      "size": 23.5,
-      "category": "men",
-      "flexIndex": 110,
-      "year": "2019",
-      "price": 200,
-      "condition": 10,
-      "photos": [
-        "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aa3d60a15_1280x1280.jpeg?1605806673",
-        "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aadab9cf7_1280x1280.jpeg?1605806830"
-      ]
-    },
-    {
-      "id": "5f38ee67-b3c2-4c95-a879-9d671be2b444",
-      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
-      "manufacturer": "Salomon",
-      "model": "X Lab+",
-      "description": "Brand new! ",
-      "size": 23.5,
-      "category": "men",
-      "flexIndex": 110,
-      "year": "2019",
-      "price": 200,
-      "condition": 10,
-      "photos": [
-        "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aa3d60a15_1280x1280.jpeg?1605806673",
-        "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aadab9cf7_1280x1280.jpeg?1605806830"
-      ]
+      ],
+      "createdAt": "Mon May 23 2022 12:15:28 GMT+0300 (Eastern European Summer Time)"
     },
     {
       "id": "ed79650c-2b88-4553-8326-569f8c0b7ea3",
@@ -163,7 +136,25 @@
       "photos": [
         "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aa3d60a15_1280x1280.jpeg?1605806673",
         "https://cdncloudcart.com/16489/products/images/311/salomon-xlab-110-novi-image_5fb6aadab9cf7_1280x1280.jpeg?1605806830"
-      ]
+      ],
+      "createdAt": "Tue May 24 2022 19:15:28 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "5dc4c287-7d77-4a6f-ad98-54ce8696ff8b",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "manufacturer": "Atomic",
+      "model": "Redster",
+      "description": "Red like tomato. ",
+      "size": 26.5,
+      "category": "men",
+      "flexIndex": 150,
+      "year": "2020",
+      "price": 250,
+      "condition": 9,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/1010/atomic-redster-world-cup-150-image_61a90c7e4f02d_1920x1920.jpeg?1638468788"
+      ],
+      "createdAt": "Tue May 24 2022 19:19:28 GMT+0300 (Eastern European Summer Time)"
     }
   ],
   "user": [

@@ -17,6 +17,8 @@ import RequireAuthRedirect from "./components/RequireAuthRedirect";
 
 function App() {
   const [ski, setSki] = useState([]);
+  const [boots, setBoots] = useState([]);
+
   const [errors, setErrors] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -29,8 +31,22 @@ function App() {
     }
   }
 
-  useEffect(() => {
+  async function fetchBoots() {
+    try {
+      const response = await ApiClient.fetchBoots();
+      setBoots(response);
+    } catch (error) {
+      setErrors(error);
+    }
+  }
+
+  async function updateProducts() {
     fetchSkis();
+    fetchBoots();
+  }
+
+  useEffect(() => {
+    updateProducts();
   }, []);
 
   const setUserContext = (user) => {
@@ -52,7 +68,10 @@ function App() {
                 />
               }
             >
-              <Route index element={<Home ski={ski} />}></Route>
+              <Route
+                index
+                element={<Home products={[...ski, ...boots]} />}
+              ></Route>
               <Route path="/sign-up" element={<SignUp />} />
               <Route
                 path="/sign-in"
@@ -70,7 +89,7 @@ function App() {
                   <RequireAuthRedirect to="/sign-in">
                     <AddProduct
                       setErrors={setErrors}
-                      updateProducts={fetchSkis}
+                      updateProducts={updateProducts}
                     />
                   </RequireAuthRedirect>
                 }

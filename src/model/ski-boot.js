@@ -16,6 +16,7 @@ export class Boot {
     price = 0.0,
     condition = 1,
     photos = [],
+    createdAt = new Date().toString(),
   }) {
     this.id = id;
     this.userId = userId;
@@ -29,5 +30,6 @@ export class Boot {
     this.price = price;
     this.condition = condition;
     this.photos = photos;
+    this.createdAt = createdAt;
   }
 }

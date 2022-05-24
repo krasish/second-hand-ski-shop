@@ -8,7 +8,7 @@ import ProductAlbum from "../components/ProductAlbum";
 import { useNavigate } from "react-router-dom";
 import RequireNoAuth from "../components/RequireNoAuth";
 
-function Home({ ski }) {
+function Home({ products }) {
   const navigate = useNavigate();
 
   const handleToolbarButtonClick = (e) => {
@@ -88,7 +88,7 @@ function Home({ ski }) {
             >
               Latest products
             </Typography>
-            <ProductAlbum products={ski} />
+            <ProductAlbum products={products} />
           </Container>
         </Box>
       </main>
