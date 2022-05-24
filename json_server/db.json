@@ -8,7 +8,7 @@
       "category": "men",
       "year": 2020,
       "model": "Pursuit 500",
-      "skill": "Intermediate",
+      "skill": "intermediate",
       "price": 500,
       "condition": 8,
       "photos": [
@@ -23,7 +23,7 @@
       "category": "men",
       "year": 2019,
       "model": "Redster S9",
-      "skill": "Advanced",
+      "skill": "advanced",
       "price": 500,
       "condition": 5,
       "photos": [
@@ -38,7 +38,7 @@
       "category": "men",
       "year": 2020,
       "model": "Redster X9",
-      "skill": "Intermediate",
+      "skill": "intermediate",
       "price": 500,
       "condition": 9,
       "photos": [
@@ -57,7 +57,7 @@
       "category": "men",
       "year": 2019,
       "model": "Savor 3",
-      "skill": "Beginner",
+      "skill": "beginner",
       "price": 150,
       "condition": 1,
       "photos": []

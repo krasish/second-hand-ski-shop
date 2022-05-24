@@ -1,8 +1,11 @@
 import {
   Button,
+  FormControl,
   FormControlLabel,
   FormLabel,
   Grid,
+  InputLabel,
+  NativeSelect,
   Radio,
   RadioGroup,
   TextField,
@@ -10,33 +13,66 @@ import {
 import * as yup from "yup";
 import React from "react";
 
+export const SKI_MANUFACTURERS = [
+  "4FRNT",
+  "Atomic",
+  "Blizzard",
+  "Dynastar",
+  "Elan",
+  "Fischer",
+  "Head",
+  "K2",
+  "Kneissl",
+  "Nordica",
+  "Peltonen",
+  "Rossignol",
+  "Salomon",
+  "Völkl",
+];
+
 export const SkiSchema = yup.object({
-  email: yup.string().email(),
-  firstName: yup
+  manufacturer: yup
     .string()
-    .required("First name is required")
-    .max(32, "First name should be less that 32 characters"),
-  lastName: yup
+    .required("Manufacturer is required")
+    .max(32, "Manufacturer should be less that 32 characters"),
+  model: yup
     .string()
-    .required("Last name is required")
-    .max(32, "Last name should be less that 32 characters"),
-  username: yup
+    .required("Model is required")
+    .max(32, "Model should be less that 32 characters"),
+  description: yup
     .string()
-    .required("Username is required")
-    .max(16, "Username should be less that 16 characters"),
-  password: yup
+    .max(2048, "Description cannot be longer than 2048 characters"),
+  category: yup
     .string()
-    .required("Password is required")
-    .min(8, "Password should be at least 8 characters long")
+    .required("Category is required")
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Password should contain one letter, one digit, one special character"
+      /(men|women|kids)/,
+      "Category can only be 'men', 'women' or 'kids'"
     ),
-  gender: yup
+  year: yup
+    .number()
+    .integer()
+    .positive()
+    .lessThan(
+      new Date().getFullYear(),
+      "Year cannot be later than current year"
+    ),
+  skill: yup
     .string()
-    .required("Gender is required")
-    .matches(/(male|female)/, "Gender can only be 'male' or 'female'"),
-  imageUrl: yup.string().url(),
+    .required("Skill is required")
+    .matches(
+      /(beginner|intermediate|advanced)/,
+      "Skill can only be 'beginner', 'intermediate' or 'advanced'"
+    ),
+  price: yup
+    .number()
+    .required("Price is required")
+    .positive("Price cannot be negative"),
+  condition: yup
+    .number()
+    .integer()
+    .moreThan(0, "Condition can be on scale from 1 to 10")
+    .lessThan(11, "Condition can be on scale from 1 to 10"),
 });
 
 function SkiForm({ formik }) {
@@ -56,34 +92,36 @@ function SkiForm({ formik }) {
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TextField
-          fullWidth
-          autoFocus
-          required
-          id="firstName"
-          name="firstName"
-          label="First Name"
-          type="text"
-          autoComplete="given-name"
-          value={formik.values.firstName}
-          onChange={formik.handleChange}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-        />
+        <FormControl fullWidth>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Manufacturer
+          </InputLabel>
+          <NativeSelect
+            defaultValue={30}
+            inputProps={{
+              name: "age",
+              id: "uncontrolled-native",
+            }}
+          >
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </NativeSelect>
+        </FormControl>
       </Grid>
       <Grid item xs={12} sm={6}>
         <TextField
           fullWidth
+          autoFocus
           required
-          id="lastName"
-          name="lastName"
-          label="Last Name"
+          id="model"
+          name="model"
+          label="Model"
           type="text"
-          autoComplete="family-name"
-          value={formik.values.lastName}
+          value={formik.values.model}
           onChange={formik.handleChange}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          helperText={formik.touched.lastName && formik.errors.lastName}
+          error={formik.touched.model && Boolean(formik.errors.model)}
+          helperText={formik.touched.model && formik.errors.model}
         />
       </Grid>
       <Grid item xs={12}>
