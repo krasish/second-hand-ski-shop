@@ -1,5 +1,6 @@
 export const API_BASE_URL = "http://localhost:6969/api/";
 export const SKI_PATH = "ski/";
+export const SKI_BOOT_PATH = "boots/";
 export const USERS_PATH = "user/";
 
 class ApiClient {
@@ -41,6 +42,15 @@ class ApiClient {
   }
 
   //SKI-BOOTS
+  async createBoot(boot) {
+    return this.handleResponse(this.POSTRequestFunction(SKI_BOOT_PATH, boot));
+  }
+
+  async fetchBoots() {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${SKI_BOOT_PATH}`)
+    );
+  }
 
   //utils
   POSTRequestFunction(path, body) {

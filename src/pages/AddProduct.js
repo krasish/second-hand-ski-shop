@@ -67,7 +67,10 @@ function AddProduct({ setErrors, updateProducts }) {
           {product === PRODUCT_SKI ? (
             <SkiForm setErrors={setErrors} updateProducts={updateProducts} />
           ) : (
-            <SkiBootForm />
+            <SkiBootForm
+              setErrors={setErrors}
+              updateProducts={updateProducts}
+            />
           )}
         </Box>
       </Container>

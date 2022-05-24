@@ -35,6 +35,7 @@ export const SKI_MANUFACTURERS = [
   "Rossignol",
   "Salomon",
   "Völkl",
+  "OTHER",
 ];
 
 export const SkiSchema = yup.object({
