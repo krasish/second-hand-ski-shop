@@ -8,10 +8,15 @@ import {
   NativeSelect,
   Radio,
   RadioGroup,
+  Slider,
   TextField,
+  Typography,
 } from "@mui/material";
 import * as yup from "yup";
 import React from "react";
+import { SKILLS, SKILL_BEGINNER } from "../model/skill";
+import { CATEGORIES, CATEGORY_MEN } from "../model/category";
+import { useFormik } from "formik";
 
 export const SKI_MANUFACTURERS = [
   "4FRNT",
@@ -42,6 +47,11 @@ export const SkiSchema = yup.object({
   description: yup
     .string()
     .max(2048, "Description cannot be longer than 2048 characters"),
+  size: yup
+    .number()
+    .integer("Size must be a whole number")
+    .positive("Size must be a positive number")
+    .lessThan(280, "Size cannot be bigger than 280"),
   category: yup
     .string()
     .required("Category is required")
@@ -75,37 +85,53 @@ export const SkiSchema = yup.object({
     .lessThan(11, "Condition can be on scale from 1 to 10"),
 });
 
-function SkiForm({ formik }) {
+function SkiForm() {
+  const formik = useFormik({
+    initialValues: {
+      manufacturer: SKI_MANUFACTURERS[0],
+      model: "",
+      description: "",
+      size: 150,
+      year: 2000,
+      skill: SKILLS[SKILL_BEGINNER],
+      price: 0.0,
+      condition: 5,
+      category: CATEGORIES[CATEGORY_MEN],
+      photos: [],
+    },
+    validationSchema: SkiSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const years = Array(30)
+    .fill(new Date().getFullYear())
+    .map((x, y) => x - y);
+
   return (
-    <Grid container spacing={2} component="form" onSubmit={formik.handleSubmit}>
-      <Grid item xs={12}>
-        <TextField
-          fullWidth
-          required
-          id="email"
-          name="email"
-          label="Email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-      </Grid>
+    <Grid container spacing={3} component="form" onSubmit={formik.handleSubmit}>
       <Grid item xs={12} sm={6}>
         <FormControl fullWidth>
-          <InputLabel variant="standard" htmlFor="uncontrolled-native">
-            Manufacturer
-          </InputLabel>
+          <InputLabel variant="standard">Manufacturer</InputLabel>
           <NativeSelect
-            defaultValue={30}
-            inputProps={{
-              name: "age",
-              id: "uncontrolled-native",
-            }}
+            id="manufacturer"
+            name="manufacturer"
+            value={formik.values.manufacturer}
+            onChange={formik.handleChange}
+            defaultValue={formik.initialValues.manufacturer}
+            error={
+              formik.touched.manufacturer && Boolean(formik.errors.manufacturer)
+            }
+            helperText={
+              formik.touched.manufacturer && formik.errors.manufacturer
+            }
           >
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            {SKI_MANUFACTURERS.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
           </NativeSelect>
         </FormControl>
       </Grid>
@@ -119,72 +145,140 @@ function SkiForm({ formik }) {
           label="Model"
           type="text"
           value={formik.values.model}
+          defaultValue={formik.initialValues.model}
           onChange={formik.handleChange}
           error={formik.touched.model && Boolean(formik.errors.model)}
           helperText={formik.touched.model && formik.errors.model}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={4}>
+        <FormControl fullWidth>
+          <InputLabel variant="standard">Category</InputLabel>
+          <NativeSelect
+            id="category"
+            name="category"
+            value={formik.values.category}
+            onChange={formik.handleChange}
+            defaultValue={formik.initialValues.category}
+            error={formik.touched.category && Boolean(formik.errors.category)}
+            helperText={formik.touched.category && formik.errors.category}
+          >
+            {CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {c.charAt(0).toUpperCase() + c.slice(1)}
+              </option>
+            ))}
+          </NativeSelect>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <FormControl fullWidth>
+          <InputLabel variant="standard">Year</InputLabel>
+          <NativeSelect
+            id="year"
+            name="year"
+            value={formik.values.year}
+            onChange={formik.handleChange}
+            defaultValue={formik.initialValues.year}
+            error={formik.touched.year && Boolean(formik.errors.year)}
+            helperText={formik.touched.year && formik.errors.year}
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
+          </NativeSelect>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <FormControl fullWidth>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Skill
+          </InputLabel>
+          <NativeSelect
+            id="skill"
+            name="skill"
+            value={formik.values.skill}
+            onChange={formik.handleChange}
+            defaultValue={SKILLS[SKILL_BEGINNER]}
+            error={formik.touched.skill && Boolean(formik.errors.skill)}
+            helperText={formik.touched.skill && formik.errors.skill}
+          >
+            {SKILLS.map((s) => (
+              <option key={s} value={s}>
+                {s.charAt(0).toUpperCase() + s.slice(1)}
+              </option>
+            ))}
+          </NativeSelect>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} sm={5}>
         <TextField
           fullWidth
+          autoFocus
           required
-          id="username"
-          name="username"
-          label="Username"
-          type="username"
-          autoComplete="username"
-          value={formik.values.username}
+          id="size"
+          name="size"
+          label="Size"
+          type="number"
+          value={formik.values.size}
           onChange={formik.handleChange}
-          error={formik.touched.username && Boolean(formik.errors.username)}
-          helperText={formik.touched.username && formik.errors.username}
+          error={formik.touched.size && Boolean(formik.errors.size)}
+          helperText={formik.touched.size && formik.errors.size}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={2}></Grid>
+      <Grid item xs={12} sm={5}>
         <TextField
           fullWidth
+          autoFocus
           required
-          id="password"
-          name="password"
-          label="Password"
-          type="password"
-          autoComplete="new-password"
-          value={formik.values.password}
+          id="price"
+          name="price"
+          label="Price"
+          type="number"
+          value={formik.values.price}
           onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
+          error={formik.touched.price && Boolean(formik.errors.price)}
+          helperText={formik.touched.price && formik.errors.price}
         />
       </Grid>
       <Grid item xs={12}>
-        <FormLabel required id="gender" type="gender">
-          Gender
-        </FormLabel>
-        <RadioGroup
-          aria-labelledby="gender"
-          defaultValue="male"
-          name="gender"
-          type="gender"
+        <Typography id="input-slider" color="text.secondary" gutterBottom>
+          Condition
+        </Typography>
+        <Slider
+          name="condition"
+          id="condition"
+          label="condition"
+          defaultValue={formik.initialValues.condition}
+          valueLabelDisplay="auto"
+          step={1}
+          marks
+          min={1}
+          max={10}
+          value={formik.values.condition}
           onChange={formik.handleChange}
-          value={formik.values.gender}
-        >
-          <FormControlLabel value="male" label="Male" control={<Radio />} />
-          <FormControlLabel value="female" label="Female" control={<Radio />} />
-        </RadioGroup>
+        />
       </Grid>
       <Grid item xs={12}>
         <TextField
-          name="imageUrl"
           fullWidth
-          id="imageUrl"
-          label="Image URL"
-          value={formik.values.imageUrl}
+          name="description"
+          label="Description"
+          type="description"
+          id="description"
+          multiline={true}
+          minRows={8}
+          defaultValue={formik.initialValues.description}
+          value={formik.values.description}
           onChange={formik.handleChange}
-          error={formik.touched.imageUrl && Boolean(formik.errors.imageUrl)}
-          helperText={formik.touched.imageUrl && formik.errors.imageUrl}
         />
       </Grid>
       <Grid item xs={12}>
-        <Button variant="contained" fullWidth type="submit">
-          Sign Up
+        <Button color="success" variant="contained" fullWidth type="submit">
+          Publish
         </Button>
       </Grid>
     </Grid>

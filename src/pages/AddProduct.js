@@ -1,31 +1,12 @@
 import { Box, Container, MenuItem, Select, Typography } from "@mui/material";
-import { useFormik } from "formik";
 import React, { useState } from "react";
 import SkiBootForm from "../components/SkiBootForm";
-import SkiForm, { SkiSchema } from "../components/SkiForm";
-import { CATEGORIES, CATEGORY_MEN } from "../model/category";
+import SkiForm from "../components/SkiForm";
 
 const [PRODUCT_SKI, PRODUCT_SKI_BOOT] = ["Ski", "Ski boots"];
 
-function handleSkiSubmit(values) {}
-
-function handleSkiBootSubmit(values) {}
-
 function AddProduct() {
   const [product, setProduct] = useState(PRODUCT_SKI);
-
-  const formik = useFormik({
-    initialValues: {
-      category: CATEGORIES[CATEGORY_MEN],
-      imageUrls: "",
-    },
-    validationSchema: product === PRODUCT_SKI ? SkiSchema : null,
-    onSubmit: async (values) => {
-      product === PRODUCT_SKI
-        ? handleSkiSubmit(values)
-        : handleSkiBootSubmit(values);
-    },
-  });
 
   return (
     <Box
@@ -83,11 +64,7 @@ function AddProduct() {
             </MenuItem>
           </Select>
 
-          {product === PRODUCT_SKI ? (
-            <SkiForm formik={formik} />
-          ) : (
-            <SkiBootForm />
-          )}
+          {product === PRODUCT_SKI ? <SkiForm /> : <SkiBootForm />}
         </Box>
       </Container>
     </Box>
