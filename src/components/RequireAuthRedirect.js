@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import UserContext from "./Auth";
+import UserContext from "./UserContext";
 
-function RequireAuthRedirect({ children }) {
+function RequireAuthRedirect({ to, children }) {
   const user = useContext(UserContext);
   let location = useLocation();
 
   if (!user) {
-    return <Navigate to="/signin" state={{ from: location }} />;
+    return <Navigate to={to} state={{ from: location }} />;
   }
 
   return children;

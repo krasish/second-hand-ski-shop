@@ -5,7 +5,7 @@ import SkiForm from "../components/SkiForm";
 
 const [PRODUCT_SKI, PRODUCT_SKI_BOOT] = ["Ski", "Ski boots"];
 
-function AddProduct() {
+function AddProduct({ setErrors, updateProducts }) {
   const [product, setProduct] = useState(PRODUCT_SKI);
 
   return (
@@ -64,7 +64,11 @@ function AddProduct() {
             </MenuItem>
           </Select>
 
-          {product === PRODUCT_SKI ? <SkiForm /> : <SkiBootForm />}
+          {product === PRODUCT_SKI ? (
+            <SkiForm setErrors={setErrors} updateProducts={updateProducts} />
+          ) : (
+            <SkiBootForm />
+          )}
         </Box>
       </Container>
     </Box>

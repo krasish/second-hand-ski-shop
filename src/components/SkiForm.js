@@ -1,22 +1,24 @@
 import {
+  Autocomplete,
   Button,
+  Chip,
   FormControl,
-  FormControlLabel,
-  FormLabel,
   Grid,
   InputLabel,
   NativeSelect,
-  Radio,
-  RadioGroup,
   Slider,
   TextField,
   Typography,
 } from "@mui/material";
 import * as yup from "yup";
-import React from "react";
+import { React, useContext } from "react";
 import { SKILLS, SKILL_BEGINNER } from "../model/skill";
 import { CATEGORIES, CATEGORY_MEN } from "../model/category";
+import { Ski } from "../model/ski";
 import { useFormik } from "formik";
+import ApiClient from "../service/api-client";
+import UserContext from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const SKI_MANUFACTURERS = [
   "4FRNT",
@@ -85,7 +87,10 @@ export const SkiSchema = yup.object({
     .lessThan(11, "Condition can be on scale from 1 to 10"),
 });
 
-function SkiForm() {
+function SkiForm({ setErrors, updateProducts }) {
+  const user = useContext(UserContext);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       manufacturer: SKI_MANUFACTURERS[0],
@@ -100,14 +105,26 @@ function SkiForm() {
       photos: [],
     },
     validationSchema: SkiSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const id = crypto.randomUUID();
+      const ski = new Ski({ id: id, userId: user.id, ...values });
+      try {
+        await ApiClient.createSki(ski);
+        updateProducts();
+        navigate("/catalog-ski");
+      } catch (error) {
+        setErrors([error]);
+      }
     },
   });
 
   const years = Array(30)
     .fill(new Date().getFullYear())
     .map((x, y) => x - y);
+
+  const handleChangeForMultipleInputs = (e, value) => {
+    formik.setFieldValue("photos", value);
+  };
 
   return (
     <Grid container spacing={3} component="form" onSubmit={formik.handleSubmit}>
@@ -274,6 +291,38 @@ function SkiForm() {
           defaultValue={formik.initialValues.description}
           value={formik.values.description}
           onChange={formik.handleChange}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Autocomplete
+          id="photos"
+          name="photos"
+          label="Photos"
+          multiple
+          freeSolo
+          fullWidth
+          sx={{ bgcolor: "white" }}
+          defaultValue={formik.initialValues.photos}
+          options={formik.values.photos}
+          onChange={handleChangeForMultipleInputs}
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip
+                variant="outlined"
+                label={option}
+                color="secondary"
+                {...getTagProps({ index })}
+              />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="filled"
+              placeholder="Photos"
+              color="primary"
+            />
+          )}
         />
       </Grid>
       <Grid item xs={12}>

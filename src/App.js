@@ -13,21 +13,23 @@ import SignUp from "./pages/SignUp.js";
 import SignIn from "./pages/SignIn.js";
 import UserContext from "./components/UserContext";
 import AddProduct from "./pages/AddProduct.js";
+import RequireAuthRedirect from "./components/RequireAuthRedirect";
 
 function App() {
   const [ski, setSki] = useState([]);
   const [errors, setErrors] = useState([]);
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    async function fetchSkis() {
-      try {
-        const response = await ApiClient.fetchSkis();
-        setSki(response);
-      } catch (error) {
-        setErrors(error);
-      }
+  async function fetchSkis() {
+    try {
+      const response = await ApiClient.fetchSkis();
+      setSki(response);
+    } catch (error) {
+      setErrors(error);
     }
+  }
+
+  useEffect(() => {
     fetchSkis();
   }, []);
 
@@ -41,7 +43,15 @@ function App() {
       <UserContext.Provider value={user}>
         <ThemeProvider theme={theme}>
           <Routes>
-            <Route element={<Baseline onLogout={() => setUserContext(null)} />}>
+            <Route
+              element={
+                <Baseline
+                  setErrors={setErrors}
+                  errors={errors}
+                  onLogout={() => setUserContext(null)}
+                />
+              }
+            >
               <Route index element={<Home ski={ski} />}></Route>
               <Route path="/sign-up" element={<SignUp />} />
               <Route
@@ -53,7 +63,18 @@ function App() {
                 path="/catalog-ski/:skiId"
                 element={<Product ski={ski} />}
               />
-              <Route path="add-product" element={<AddProduct />} />
+
+              <Route
+                path="add-product"
+                element={
+                  <RequireAuthRedirect to="/sign-in">
+                    <AddProduct
+                      setErrors={setErrors}
+                      updateProducts={fetchSkis}
+                    />
+                  </RequireAuthRedirect>
+                }
+              />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

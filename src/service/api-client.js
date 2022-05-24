@@ -7,18 +7,7 @@ class ApiClient {
     this.baseApiUrl = baseApiUrl;
   }
 
-  POSTRequestFunction(path, body) {
-    return async () => {
-      fetch(`${this.baseApiUrl}${path}`, {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-    };
-  }
-
+  //USER
   async createUser(user) {
     return this.handleResponse(this.POSTRequestFunction(USERS_PATH, user));
   }
@@ -40,13 +29,32 @@ class ApiClient {
     }
   }
 
+  //SKI
+  async createSki(ski) {
+    return this.handleResponse(this.POSTRequestFunction(SKI_PATH, ski));
+  }
+
   async fetchSkis() {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_PATH}`)
     );
   }
 
-  //error handling
+  //SKI-BOOTS
+
+  //utils
+  POSTRequestFunction(path, body) {
+    return async () => {
+      fetch(`${this.baseApiUrl}${path}`, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+    };
+  }
+
   async handleResponse(ayncRequestFunction) {
     try {
       const resp = await ayncRequestFunction();

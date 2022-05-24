@@ -61,6 +61,41 @@
       "price": 150,
       "condition": 1,
       "photos": []
+    },
+    {
+      "id": "516747e1-aea4-4f9d-b8d4-50f4573dbabf",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "manufacturer": "Atomic",
+      "description": "Technologies: \nCap Sidewall\n\nBend-X Technology\n\nGraphite Core\n\nTriple Sidecut",
+      "size": 150,
+      "category": "men",
+      "year": "2019",
+      "model": "Savor 3",
+      "skill": "beginner",
+      "price": 150,
+      "condition": 5,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd665199a0_1920x1920.jpeg?1612502648",
+        "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd6ad67e8a_1920x1920.jpeg?1612502734",
+        "https://cdncloudcart.com/16489/products/images/460/atomic-savor-3-image_601cd68fb88b8_1920x1920.jpeg?1612502736"
+      ]
+    },
+    {
+      "id": "006ad78a-b7f6-4b0d-83eb-21adf1ea5f3e",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "manufacturer": "Fischer",
+      "description": "Turn Zone with BAFATEX\n\nAir Carbon Ti 0.8\n\nFree Milled Titanium\n\nTriple Radius\n\nShaped Ti\n\nMultiflex\n\nSandwich Sidewall Construction",
+      "size": 150,
+      "category": "men",
+      "year": 2000,
+      "model": "RC One 72 MF",
+      "skill": "intermediate",
+      "price": 350,
+      "condition": 5,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/902/fischer-rc-one-72-mf-test-ski-image_6145b96d3a0a1_1920x1920.jpeg?1653147867",
+        "https://cdncloudcart.com/16489/products/images/902/fischer-rc-one-72-mf-test-ski-image_6145b971774c8_1920x1920.jpeg?1653147867"
+      ]
     }
   ],
   "boots": [
