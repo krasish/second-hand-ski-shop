@@ -277,6 +277,10 @@ function SkiBootForm({ setErrors, updateProducts }) {
           defaultValue={formik.initialValues.description}
           value={formik.values.description}
           onChange={formik.handleChange}
+          error={
+            formik.touched.description && Boolean(formik.errors.description)
+          }
+          helperText={formik.touched.description && formik.errors.description}
         />
       </Grid>
       <Grid item xs={12}>
