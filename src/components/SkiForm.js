@@ -166,7 +166,6 @@ function SkiForm({ setErrors, updateProducts }) {
           defaultValue={formik.initialValues.model}
           onChange={formik.handleChange}
           error={formik.touched.model && Boolean(formik.errors.model)}
-          helperText={formik.touched.model && formik.errors.model}
         />
       </Grid>
       <Grid item xs={12} sm={4}>
@@ -243,7 +242,6 @@ function SkiForm({ setErrors, updateProducts }) {
           value={formik.values.size}
           onChange={formik.handleChange}
           error={formik.touched.size && Boolean(formik.errors.size)}
-          helperText={formik.touched.size && formik.errors.size}
         />
       </Grid>
       <Grid item xs={12} sm={2}></Grid>
@@ -259,7 +257,6 @@ function SkiForm({ setErrors, updateProducts }) {
           value={formik.values.price}
           onChange={formik.handleChange}
           error={formik.touched.price && Boolean(formik.errors.price)}
-          helperText={formik.touched.price && formik.errors.price}
         />
       </Grid>
       <Grid item xs={12}>
@@ -295,7 +292,6 @@ function SkiForm({ setErrors, updateProducts }) {
           error={
             formik.touched.description && Boolean(formik.errors.description)
           }
-          helperText={formik.touched.description && formik.errors.description}
         />
       </Grid>
       <Grid item xs={12}>

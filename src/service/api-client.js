@@ -2,6 +2,7 @@ export const API_BASE_URL = "http://localhost:6969/api/";
 export const SKI_PATH = "ski/";
 export const SKI_BOOT_PATH = "boots/";
 export const USERS_PATH = "user/";
+export const REVIEWS_PATH = "review/";
 
 class ApiClient {
   constructor(baseApiUrl = API_BASE_URL) {
@@ -50,6 +51,11 @@ class ApiClient {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_BOOT_PATH}`)
     );
+  }
+
+  //REVIEWS
+  async createReview(review) {
+    return this.handleResponse(this.POSTRequestFunction(REVIEWS_PATH, review));
   }
 
   //utils

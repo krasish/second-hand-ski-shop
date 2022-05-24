@@ -182,5 +182,15 @@
       "role": "user",
       "active": true
     }
+  ],
+  "review": [
+    {
+      "id": "333fcbfb-5914-4342-845e-c37b494d6817",
+      "fromUserId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "forUserId": "bef8d123-29a5-4d7f-a981-9473ac68e8da",
+      "rating": 2.5,
+      "review": "Will do it but I am not satisfied!",
+      "createdAt": "Tue May 24 2022 20:17:31 GMT+0300 (Eastern European Summer Time)"
+    }
   ]
 }
