@@ -5,8 +5,9 @@ export const USERS_PATH = "user/";
 export const REVIEWS_PATH = "review/";
 
 class ApiClient {
-  constructor(baseApiUrl = API_BASE_URL) {
+  constructor(baseApiUrl = API_BASE_URL, debugLogs = false) {
     this.baseApiUrl = baseApiUrl;
+    this.debugLogs = debugLogs;
   }
 
   //USER
@@ -31,6 +32,16 @@ class ApiClient {
     }
   }
 
+  async fetchUsers() {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${USERS_PATH}`)
+    );
+  }
+
+  async deleteUser(userId) {
+    return this.handleResponse(this.DELETERequestFunction(USERS_PATH, userId));
+  }
+
   //SKI
   async createSki(ski) {
     return this.handleResponse(this.POSTRequestFunction(SKI_PATH, ski));
@@ -40,6 +51,10 @@ class ApiClient {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_PATH}`)
     );
+  }
+
+  async deleteSki(skiId) {
+    return this.handleResponse(this.DELETERequestFunction(SKI_PATH, skiId));
   }
 
   //SKI-BOOTS
@@ -53,9 +68,27 @@ class ApiClient {
     );
   }
 
+  async deleteBoot(bootId) {
+    return this.handleResponse(
+      this.DELETERequestFunction(SKI_BOOT_PATH, bootId)
+    );
+  }
+
   //REVIEWS
   async createReview(review) {
     return this.handleResponse(this.POSTRequestFunction(REVIEWS_PATH, review));
+  }
+
+  async fetchReviews() {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${REVIEWS_PATH}`)
+    );
+  }
+
+  async deleteReview(reviewId) {
+    return this.handleResponse(
+      this.DELETERequestFunction(REVIEWS_PATH, reviewId)
+    );
   }
 
   //utils
@@ -71,29 +104,37 @@ class ApiClient {
     };
   }
 
+  DELETERequestFunction(path, id) {
+    return async () => {
+      fetch(`${this.baseApiUrl}${path}${id}`, {
+        method: "DELETE",
+      });
+    };
+  }
+
   async handleResponse(ayncRequestFunction) {
     try {
       const resp = await ayncRequestFunction();
       if (resp && resp.status < 400) {
         const content = await resp.json();
-        console.log(content);
-        console.log(
-          `Successfult HTTP request [${resp.status}]: ${JSON.stringify(
-            content
-          )}`
-        );
+        this.debugLogs &&
+          console.log(
+            `Successfult HTTP request [${resp.status}]: ${JSON.stringify(
+              content
+            )}`
+          );
         return content;
       } else if (resp) {
         const msg = `HTTP error ${resp.status}: ${JSON.stringify(resp)}`;
-        console.log(msg);
+        this.debugLogs && console.log(msg);
         return Promise.reject(msg);
       }
     } catch (err) {
       const msg = `HTTP error while performing request: ${err}`;
-      console.log(msg);
+      this.debugLogs && console.log(msg);
       return Promise.reject(msg);
     }
   }
 }
 
-export default new ApiClient(API_BASE_URL);
+export default new ApiClient(API_BASE_URL, false);

@@ -54,8 +54,6 @@ function ReviewForm({ setErrors, forUser }) {
           id="rating"
           size="large"
           precision={0.5}
-          minRows={8}
-          multiline={true}
           value={formik.values.rating}
           onChange={formik.handleChange}
           defaultValue={formik.initialValues.rating}

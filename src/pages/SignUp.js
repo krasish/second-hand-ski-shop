@@ -75,7 +75,7 @@ function SignUp() {
       const user = new User({ id: id, imageUrl: imageUrl, ...values });
       try {
         await ApiClient.createUser(user);
-        navigate("/signin");
+        navigate("/sign-in");
       } catch (error) {
         alert(error);
       }

@@ -167,7 +167,7 @@
       "password": "h0meWork!",
       "imageUrl": "https://media-exp1.licdn.com/dms/image/C4E03AQEuBif2WzVHpw/profile-displayphoto-shrink_800_800/0/1648132247227?e=1655942400&v=beta&t=3VhqQksmIVJUBR82hQ86f9hT_MBabMHHDoP8LaInVWM",
       "gender": "male",
-      "role": "user",
+      "role": "admin",
       "active": true
     },
     {
@@ -178,6 +178,18 @@
       "username": "misho",
       "password": "h0meWork!",
       "imageUrl": "https://i.discogs.com/JUtekVS1Lv3Qw5SqE2d6krHrfeg05xyQnDQiNlRo4pg/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ3NzU0/MTgtMTQ3ODg3Nzg4/Ny03NTA0LmpwZWc.jpeg",
+      "gender": "male",
+      "role": "user",
+      "active": true
+    },
+    {
+      "id": "1c344475-cbac-4310-91e6-d4e14b9abd7a",
+      "email": "vesko_mar@abv.bg",
+      "firstName": "Vesko",
+      "lastName": "Marinov",
+      "username": "ves_mar",
+      "password": "h0meWork!",
+      "imageUrl": "https://kmeta.bg/wp-content/uploads/2022/03/Screenshot-2022-03-10-133124.png",
       "gender": "male",
       "role": "user",
       "active": true
