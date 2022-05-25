@@ -9,7 +9,7 @@ function Baseline({ setErrors, errors, onLogout }) {
       <SkiAppBar onLogout={onLogout} />
       {errors?.length ? (
         <Alert variant="filled" severity="error" onClose={() => setErrors([])}>
-          {errors.map((e) => (
+          {errors?.map((e) => (
             <>
               <Typography key={e} variant="subtitle2">
                 {e.toString()}

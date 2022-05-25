@@ -23,7 +23,7 @@ function Home({ products }) {
           sx={{
             bgcolor: "background.default",
             pt: 8,
-            pb: 18,
+            pb: 38,
           }}
         >
           <RequireNoAuth>

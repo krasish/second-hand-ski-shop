@@ -28,7 +28,7 @@ function App() {
       const response = await ApiClient.fetchSkis();
       setSki(response);
     } catch (error) {
-      setErrors(error);
+      setErrors([error, ...errors]);
     }
   }
 
@@ -37,7 +37,7 @@ function App() {
       const response = await ApiClient.fetchBoots();
       setBoots(response);
     } catch (error) {
-      setErrors(error);
+      setErrors([error, ...errors]);
     }
   }
 
