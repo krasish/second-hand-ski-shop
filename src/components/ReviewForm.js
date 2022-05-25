@@ -16,7 +16,7 @@ export const ReviewSchema = yup.object({
     .lessThan(6, "Rating can be on scale from 0 to 5"),
 });
 
-function ReviewForm({ setErrors, forUser }) {
+function ReviewForm({ setErrors, forUser, onUpdate }) {
   const user = useContext(UserContext);
 
   const formik = useFormik({
@@ -35,6 +35,7 @@ function ReviewForm({ setErrors, forUser }) {
       });
       try {
         await ApiClient.createReview(review);
+        await onUpdate();
       } catch (error) {
         setErrors([error]);
       }

@@ -38,6 +38,7 @@ function ProductAlbum({ products }) {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
+                  bgcolor: "#a2a3a8",
                 }}
               >
                 <CardMedia
