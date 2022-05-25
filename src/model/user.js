@@ -17,6 +17,7 @@ export class User {
     username = "",
     password = "",
     imageUrl = "",
+    phone = "",
     gender = GENDERS[GENDER_MALE],
     role = ROLES[ROLE_USER],
     active = true,
@@ -28,6 +29,7 @@ export class User {
     this.username = username;
     this.password = password;
     this.imageUrl = imageUrl;
+    this.phone = phone;
     this.gender = gender;
     this.role = role;
     this.active = active;

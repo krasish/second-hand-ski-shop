@@ -17,7 +17,6 @@ function Product({ ski, ...rest }) {
   }
 
   const handleModalOpen = (e) => {
-    console.log(e);
     setModalImage(e.target.src);
     setModalOpen(true);
   };

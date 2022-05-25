@@ -1,17 +1,16 @@
-import { React, useEffect, useContext, useState, forwardRef } from "react";
+import { React, useContext, useState, forwardRef } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import ClearSharpIcon from "@mui/icons-material/ClearSharp";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { ButtonGroup, IconButton, Modal, Rating } from "@mui/material";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import { ButtonGroup, IconButton, Modal } from "@mui/material";
 import RequireAuth from "./RequireAuth";
 import ApiClient from "../service/api-client";
 import UserContext from "./UserContext";
@@ -20,6 +19,7 @@ import ConditionalRating, { MISSING_REVIEW_VALUE } from "./ConditionalRating";
 import { styled } from "@mui/system";
 import clsx from "clsx";
 import ReviewList from "./ReviewList";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const modalStyle = {
   position: "absolute",
@@ -41,7 +41,7 @@ function calculateAverage(reviews, forUserId) {
 
   reviews?.forEach(function (item, index) {
     if (item.forUserId === forUserId) {
-      total += item.rating;
+      total += Number.parseFloat(item.rating);
       count++;
     }
   });
@@ -169,13 +169,28 @@ export default function UserAlbum({ users, reviews, onUpdate, setErrors }) {
                     gutterBottom
                     variant="subtitle1"
                     component="h3"
-                    color="primary.dark"
+                    color="greenyellow"
                   >
                     Username: {user.username}
                   </Typography>
                   <ConditionalRating
                     rating={calculateAverage(reviews, user.id)}
                   />
+                  {user.phone && (
+                    <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
+                      <PhoneIcon />
+                      <Typography color="greenyellow" sx={{ ml: 2 }}>
+                        {user.phone}
+                      </Typography>
+                    </Box>
+                  )}
+
+                  <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
+                    <AlternateEmailIcon />
+                    <Typography color="greenyellow" sx={{ ml: 2 }}>
+                      {user.email}
+                    </Typography>
+                  </Box>
                 </CardContent>
                 <CardActions>
                   <ButtonGroup
