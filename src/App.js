@@ -83,7 +83,15 @@ function App() {
                 path="/catalog-ski/:skiId"
                 element={<Product ski={ski} />}
               />
-              <Route path="/users" setErrors={setErrors} element={<Users />} />
+              <Route
+                path="/users"
+                element={
+                  <Users
+                    setErrors={setErrors}
+                    updateProducts={updateProducts}
+                  />
+                }
+              />
 
               <Route
                 path="add-product"

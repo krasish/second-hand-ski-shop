@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import ClearSharpIcon from "@mui/icons-material/ClearSharp";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { ButtonGroup, IconButton, Modal } from "@mui/material";
 import RequireAuth from "./RequireAuth";
 import ApiClient from "../service/api-client";
@@ -90,8 +91,7 @@ export default function UserAlbum({ users, reviews, onUpdate, setErrors }) {
           ApiClient.deleteReview(el.id);
       });
       await ApiClient.deleteUser(user.id);
-      onUpdate();
-      //TODO: Update ski and ski boots
+      await onUpdate();
     } catch (err) {
       setErrors([err]);
     }
@@ -164,18 +164,15 @@ export default function UserAlbum({ users, reviews, onUpdate, setErrors }) {
                   <Typography gutterBottom variant="h5" component="h2">
                     {user.firstName} {user.lastName}
                   </Typography>
-
-                  <Typography
-                    gutterBottom
-                    variant="subtitle1"
-                    component="h3"
-                    color="greenyellow"
-                  >
-                    Username: {user.username}
-                  </Typography>
                   <ConditionalRating
                     rating={calculateAverage(reviews, user.id)}
                   />
+                  <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
+                    <AccountCircleIcon />
+                    <Typography color="greenyellow" sx={{ ml: 2 }}>
+                      {user.username}
+                    </Typography>
+                  </Box>
                   {user.phone && (
                     <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
                       <PhoneIcon />

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import UserAlbum from "../components/UsersAlbum";
 import ApiClient from "../service/api-client";
 
-function Users({ setErrors }) {
+function Users({ setErrors, updateProducts }) {
   const [users, setUsers] = useState([]);
   const [reviews, setReviews] = useState([]);
 
@@ -17,6 +17,11 @@ function Users({ setErrors }) {
     } catch (error) {
       setErrors([error]);
     }
+  };
+
+  const onUpdateUsersAlbum = async () => {
+    updateUsersAndReviews();
+    updateProducts();
   };
 
   useEffect(() => {
@@ -50,7 +55,7 @@ function Users({ setErrors }) {
         <UserAlbum
           users={users}
           reviews={reviews}
-          onUpdate={updateUsersAndReviews}
+          onUpdate={onUpdateUsersAlbum}
           setErrors={setErrors}
         ></UserAlbum>
       </Container>

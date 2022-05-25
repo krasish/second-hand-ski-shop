@@ -184,19 +184,6 @@
       "active": true
     },
     {
-      "id": "1c344475-cbac-4310-91e6-d4e14b9abd7a",
-      "email": "vesko_mar@abv.bg",
-      "firstName": "Vesko",
-      "lastName": "Marinov",
-      "username": "ves_mar",
-      "password": "h0meWork!",
-      "imageUrl": "https://kmeta.bg/wp-content/uploads/2022/03/Screenshot-2022-03-10-133124.png",
-      "phone": "+375 (15) 412 62 85",
-      "gender": "male",
-      "role": "user",
-      "active": true
-    },
-    {
       "id": "2cd4f384-8603-49b9-aabb-f50614c601fb",
       "email": "gosho_pochivka@abv.bg",
       "firstName": "Gosho",
@@ -205,19 +192,6 @@
       "password": "h0meWork!",
       "imageUrl": "https://sportal365images.com/process/smp-images-production/sportal.bg/18062020/1592481231983.jpg?operations=autocrop(768:433)",
       "phone": "+375 (15) 412 62 84",
-      "gender": "male",
-      "role": "user",
-      "active": true
-    },
-    {
-      "id": "1179f440-31d7-4997-8eb4-15b20eebb4ec",
-      "email": "belarusian_guy@gmail.com",
-      "firstName": "Fyodor",
-      "lastName": "Novik",
-      "username": "novik",
-      "password": "h0meWork!",
-      "imageUrl": "https://as1.ftcdn.net/v2/jpg/01/40/46/18/1000_F_140461899_dvRngd7xvZtqCUHLiIyRjgflq2EmwnVP.jpg",
-      "phone": "+375 (15) 412 62 83",
       "gender": "male",
       "role": "user",
       "active": true
@@ -233,28 +207,12 @@
       "createdAt": "Tue May 24 2022 20:17:31 GMT+0300 (Eastern European Summer Time)"
     },
     {
-      "id": "6c311ce3-38df-490a-8b94-71d705ee1211",
-      "fromUserId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
-      "forUserId": "1c344475-cbac-4310-91e6-d4e14b9abd7a",
-      "rating": "1",
-      "review": "Mnogo se poti, mani go",
-      "createdAt": "Wed May 25 2022 19:21:29 GMT+0300 (Eastern European Summer Time)"
-    },
-    {
       "id": "562fbcd8-a9e0-492f-a5aa-8e35ba1b65bb",
       "fromUserId": "bef8d123-29a5-4d7f-a981-9473ac68e8da",
       "forUserId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
       "rating": "5",
       "review": "Nai-golemiq bate!",
       "createdAt": "Wed May 25 2022 20:27:01 GMT+0300 (Eastern European Summer Time)"
-    },
-    {
-      "id": "f10117b8-6eeb-4985-8481-4987ad7af167",
-      "fromUserId": "bef8d123-29a5-4d7f-a981-9473ac68e8da",
-      "forUserId": "1c344475-cbac-4310-91e6-d4e14b9abd7a",
-      "rating": "4",
-      "review": "Vse pak sme si ot edna sfera",
-      "createdAt": "Wed May 25 2022 20:27:27 GMT+0300 (Eastern European Summer Time)"
     }
   ]
 }
