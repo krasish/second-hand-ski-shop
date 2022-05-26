@@ -128,7 +128,7 @@ export default function SkiAppBar({ onLogout }) {
   );
 
   return (
-    <AppBar position="static" elevation={3}>
+    <AppBar position="absolute" elevation={3}>
       <Container maxWidth="false">
         <Toolbar disableGutters>
           <Link

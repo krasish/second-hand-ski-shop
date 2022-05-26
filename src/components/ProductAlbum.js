@@ -20,10 +20,10 @@ const trimDescription = (description) => {
   return description;
 };
 
-function ProductAlbum({ products }) {
+function ProductAlbum({ products, smallestCardSize = 2 }) {
   return (
     <Container
-      sx={{ mt: 4, py: 8, backgroundColor: "background.paper", boxShadow: 3 }}
+      sx={{ mt: 4, py: 8, backgroundColor: "background.paper" }}
       maxWidth="xl"
     >
       <Grid container spacing={3}>
@@ -32,7 +32,7 @@ function ProductAlbum({ products }) {
             return new Date(b.createdAt) - new Date(a.createdAt);
           })
           .map((p) => (
-            <Grid item key={p.id} xs={12} sm={6} md={4} lg={3} xl={2}>
+            <Grid item key={p.id} xs={12} sm={6} md={4} lg={smallestCardSize}>
               <Card
                 sx={{
                   height: "100%",
