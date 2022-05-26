@@ -1,16 +1,38 @@
 import { Box, Card, Grid, Typography } from "@mui/material";
 import { display } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DescriptionCard from "../components/DescriptionCard";
 import ImageModal from "../components/ImageModal";
 import NotFound from "../components/NotFound";
 import QuiltedImageList from "../components/QuiltedImageList";
+import UserCardContent from "../components/UserCardContent";
+import ApiClient from "../service/api-client.js";
 
-function Product({ ski, ...rest }) {
+function Product({ setErrors }) {
   const params = useParams();
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const [modalImage, setModalImage] = React.useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [ski, setSki] = useState({});
+  const [user, setUser] = useState({});
+  const [reviews, setReviews] = useState([]);
+
+  async function fetchEntities() {
+    try {
+      const ski = await ApiClient.fetchSkiById(params.skiId);
+      setSki(ski);
+      const user = await ApiClient.fetchUserById(ski.userId);
+      setUser(user);
+      const fetchedReviews = await ApiClient.fetchReviews();
+      setReviews(fetchedReviews);
+    } catch (error) {
+      setErrors([error]);
+    }
+  }
+
+  useEffect(() => {
+    fetchEntities();
+  }, []);
 
   if (!ski || ski.length === 0) {
     return <NotFound />;
@@ -21,9 +43,6 @@ function Product({ ski, ...rest }) {
     setModalOpen(true);
   };
   const handleModalClose = () => setModalOpen(false);
-
-  const productIndex = params.skiId;
-  const current = ski.find((s) => s.id === productIndex);
 
   return (
     <React.Fragment>
@@ -52,23 +71,31 @@ function Product({ ski, ...rest }) {
               ml="12%"
               gutterBottom
             >
-              {current.manufacturer} {current.model}
+              {ski.manufacturer} {ski.model}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6} align="center">
             <QuiltedImageList
-              images={current.photos}
+              images={ski.photos}
               openModal={handleModalOpen}
             ></QuiltedImageList>
           </Grid>
           <Grid item xs={12} md={5}>
-            <DescriptionCard product={current}></DescriptionCard>
-            <Card>USER INFO</Card>
+            <DescriptionCard product={ski}></DescriptionCard>
+            <Card
+              sx={{
+                bgcolor: "#a2a3a8",
+                px: 1,
+                mt: 3,
+              }}
+            >
+              <UserCardContent user={user} reviews={reviews} />
+            </Card>
           </Grid>
         </Grid>
         <ImageModal
           image={modalImage}
-          alt={`${current.manufacturer} ${current.model}`}
+          alt={`${ski.manufacturer} ${ski.model}`}
           isOpen={modalOpen}
           handleClose={handleModalClose}
         />

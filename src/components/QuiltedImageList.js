@@ -27,7 +27,7 @@ function QuiltedImageList({ images, openModal, size = 500, cols = 2 }) {
       variant="quilted"
       cols={cols}
     >
-      {images.length ? (
+      {images?.length ? (
         images.map((img) => (
           <ImageListItem key={img} cols={cols / 2} onClick={openModal}>
             <img

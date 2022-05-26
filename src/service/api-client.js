@@ -38,6 +38,12 @@ class ApiClient {
     );
   }
 
+  async fetchUserById(userId) {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${USERS_PATH}${userId}`)
+    );
+  }
+
   async deleteUser(userId) {
     return this.handleResponse(this.DELETERequestFunction(USERS_PATH, userId));
   }
@@ -50,6 +56,12 @@ class ApiClient {
   async fetchSkis() {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_PATH}`)
+    );
+  }
+
+  async fetchSkiById(skiId) {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${SKI_PATH}${skiId}`)
     );
   }
 

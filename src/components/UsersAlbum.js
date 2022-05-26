@@ -9,8 +9,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import ClearSharpIcon from "@mui/icons-material/ClearSharp";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { ButtonGroup, IconButton, Modal } from "@mui/material";
 import RequireAuth from "./RequireAuth";
 import ApiClient from "../service/api-client";
@@ -20,7 +18,7 @@ import ConditionalRating, { MISSING_REVIEW_VALUE } from "./ConditionalRating";
 import { styled } from "@mui/system";
 import clsx from "clsx";
 import ReviewList from "./ReviewList";
-import PhoneIcon from "@mui/icons-material/Phone";
+import UserCardContent from "./UserCardContent";
 
 const modalStyle = {
   position: "absolute",
@@ -160,35 +158,7 @@ export default function UserAlbum({ users, reviews, onUpdate, setErrors }) {
                   image={user.imageUrl}
                   alt="random"
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {user.firstName} {user.lastName}
-                  </Typography>
-                  <ConditionalRating
-                    rating={calculateAverage(reviews, user.id)}
-                  />
-                  <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
-                    <AccountCircleIcon />
-                    <Typography color="greenyellow" sx={{ ml: 2 }}>
-                      {user.username}
-                    </Typography>
-                  </Box>
-                  {user.phone && (
-                    <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
-                      <PhoneIcon />
-                      <Typography color="greenyellow" sx={{ ml: 2 }}>
-                        {user.phone}
-                      </Typography>
-                    </Box>
-                  )}
-
-                  <Box mt={2} sx={{ display: "flex", flexWrap: "wrap" }}>
-                    <AlternateEmailIcon />
-                    <Typography color="greenyellow" sx={{ ml: 2 }}>
-                      {user.email}
-                    </Typography>
-                  </Box>
-                </CardContent>
+                <UserCardContent user={user} reviews={reviews} />
                 <CardActions>
                   <ButtonGroup
                     variant="contained"

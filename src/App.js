@@ -81,7 +81,7 @@ function App() {
               <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
               <Route
                 path="/catalog-ski/:skiId"
-                element={<Product ski={ski} />}
+                element={<Product setErrors={setErrors} />}
               />
               <Route
                 path="/users"
