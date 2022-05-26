@@ -1,47 +1,39 @@
-import { Grid, Pagination, Stack } from "@mui/material";
+import { Grid, Pagination, Stack, Typography } from "@mui/material";
 import React from "react";
 import SkiFilter from "../components/SkiFilter";
 import ProductAlbum from "../components/ProductAlbum";
 import { Box } from "@mui/system";
+import ProductAlbumPaged from "../components/ProductAlbumPaged";
 
 function Catalog({ ski }) {
-  const [page, setPage] = React.useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
-
   return (
     <Grid
       container
       spacing={2}
       sx={{
         bgcolor: "background.default",
-        pb: 20,
+        pb: 50,
         pt: 12,
       }}
     >
-      <Grid item xs={12} sm={2}>
-        <SkiFilter />
-      </Grid>
       <Grid
         item
         xs={12}
-        sm={9}
+        sm={2}
         sx={{
           display: "flex",
           boxShadow: 5,
+          mx: 3,
+          py: 3,
+          height: "fit-content",
           justifyContent: "center",
           flexWrap: "wrap",
           bgcolor: "background.paper",
         }}
       >
-        <ProductAlbum products={ski} smallestCardSize={3}></ProductAlbum>
-        <Box py={2}>
-          <Stack spacing={2}>
-            <Pagination count={10} page={page} onChange={handleChange} />
-          </Stack>
-        </Box>
+        <SkiFilter />
       </Grid>
+      <ProductAlbumPaged products={ski} />
     </Grid>
   );
 }
