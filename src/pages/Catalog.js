@@ -1,8 +1,6 @@
-import { Grid, Pagination, Stack, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import SkiFilter from "../components/SkiFilter";
-import ProductAlbum from "../components/ProductAlbum";
-import { Box } from "@mui/system";
 import ProductAlbumPaged from "../components/ProductAlbumPaged";
 
 function Catalog({ ski }) {

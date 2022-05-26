@@ -12,6 +12,7 @@ import {
 import { Box } from "@mui/system";
 import PaidIcon from "@mui/icons-material/Paid";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const trimDescription = (description) => {
   if (description.length > 150) {
@@ -21,6 +22,13 @@ const trimDescription = (description) => {
 };
 
 function ProductAlbum({ products, smallestCardSize = 2 }) {
+  const navigate = useNavigate();
+
+  function handleViewButton(product) {
+    const toPrefix = product.skill ? "/catalog-ski/" : "/catalog-ski-boots/";
+    navigate(`${toPrefix}${product.id}`);
+  }
+
   return (
     <Container
       sx={{ mt: 4, py: 8, backgroundColor: "background.paper" }}
@@ -109,7 +117,9 @@ function ProductAlbum({ products, smallestCardSize = 2 }) {
                       variant="contained"
                       aria-label="outlined primary button group"
                     >
-                      <Button size="small">View</Button>
+                      <Button size="small" onClick={() => handleViewButton(p)}>
+                        View
+                      </Button>
                     </ButtonGroup>
                   </CardActions>
                 </Box>

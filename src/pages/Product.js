@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Card, Grid, Typography } from "@mui/material";
 import { display } from "@mui/system";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -31,14 +31,14 @@ function Product({ ski, ...rest }) {
         pt={4}
         display="flex"
         justifyContent="center"
-        sx={{ bgcolor: "background.default", pb: "25%" }}
+        sx={{ bgcolor: "background.default", pt: 15, pb: 40 }}
       >
         <Grid
           container
           spacing={2}
           sx={{
             align: "center",
-            bgcolor: "info.light",
+            bgcolor: "background.paper",
             width: "95%",
             pb: "10%",
             boxShadow: 5,
@@ -63,6 +63,7 @@ function Product({ ski, ...rest }) {
           </Grid>
           <Grid item xs={12} md={5}>
             <DescriptionCard product={current}></DescriptionCard>
+            <Card>USER INFO</Card>
           </Grid>
         </Grid>
         <ImageModal

@@ -4,7 +4,7 @@ import React from "react";
 function DescriptionCard({ product }) {
   return (
     <React.Fragment>
-      <Card>
+      <Card sx={{ bgcolor: "info.light" }}>
         <CardContent>
           <Typography variant="subtitle1">
             <b>Manufacturer:</b> {product.manufacturer}
