@@ -1,15 +1,16 @@
 import { Grid, Pagination, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import ProductAlbum from "./ProductAlbum";
 
 function ProductAlbumPaged({ products, elementsPerPage = 4, heading = "Ski" }) {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
+
   const handleChange = (event, value) => {
     setPage(value);
   };
 
-  let pagesCount = Math.floor(products?.length / elementsPerPage) + 1;
+  let pagesCount = Math.floor(products?.length / (elementsPerPage + 1)) + 1;
 
   return (
     <Grid

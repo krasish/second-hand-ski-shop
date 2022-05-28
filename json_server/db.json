@@ -102,6 +102,25 @@
         "https://cdncloudcart.com/16489/products/images/902/fischer-rc-one-72-mf-test-ski-image_6145b971774c8_1920x1920.jpeg?1653147867"
       ],
       "createdAt": "Mon May 23 2022 15:38:40 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "66dbb4ca-15b7-4bf8-bc0d-198795951cfd",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "manufacturer": "Head",
+      "description": "Great skis for beginner female skiers!",
+      "size": 158,
+      "category": "women",
+      "year": "2021",
+      "model": "EPIC JOY",
+      "skill": "beginner",
+      "price": 350,
+      "condition": 8,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/1223/head-epic-joy-image_6285234c237f4_1920x1920.jpeg?1652892498",
+        "https://cdncloudcart.com/16489/products/images/1223/head-epic-joy-62852332e5cff_1920x1920.jpeg?1652892497",
+        "https://cdncloudcart.com/16489/products/images/1223/head-epic-joy-image_6285237885068_1920x1920.jpeg?1652892555"
+      ],
+      "createdAt": "Sat May 28 2022 11:45:02 GMT+0300 (Eastern European Summer Time)"
     }
   ],
   "boots": [

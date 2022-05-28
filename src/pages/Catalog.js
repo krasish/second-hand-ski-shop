@@ -1,9 +1,69 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SkiFilter from "../components/SkiFilter";
 import ProductAlbumPaged from "../components/ProductAlbumPaged";
+import { useSearchParams } from "react-router-dom";
+import {
+  CATEGORY_SEARCH_PARAM,
+  MANUFACTURER_SEARCH_PARAM,
+  PRICE_FROM_SEARCH_PARAM,
+  PRICE_TO_SEARCH_PARAM,
+  SKILL_SEARCH_PARAM,
+} from "../model/search-params";
 
 function Catalog({ ski }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filteredSki, setFilteredSki] = useState([]);
+
+  useEffect(() => {
+    function filterCategories(ski) {
+      const category = searchParams.get(CATEGORY_SEARCH_PARAM);
+      const allowedCategories = category ? category.split(",") : null;
+      return allowedCategories
+        ? allowedCategories.includes(ski.category)
+        : true;
+    }
+
+    function filterManufacturer(ski) {
+      const manufacturer = searchParams.get(MANUFACTURER_SEARCH_PARAM);
+      const allowedManufacturers = manufacturer
+        ? manufacturer.split(",")
+        : null;
+      return allowedManufacturers
+        ? allowedManufacturers.includes(ski.manufacturer)
+        : true;
+    }
+
+    function filterSkill(ski) {
+      const skill = searchParams.get(SKILL_SEARCH_PARAM);
+      const allowedSkills = skill ? skill.split(",") : null;
+      return allowedSkills ? allowedSkills.includes(ski.skill) : true;
+    }
+
+    function filterPriceFrom(ski) {
+      const priceFrom = searchParams.get(PRICE_FROM_SEARCH_PARAM);
+      return priceFrom
+        ? Number.parseFloat(ski.price) >= Number.parseFloat(priceFrom)
+        : true;
+    }
+
+    function filterPriceTo(ski) {
+      const priceTo = searchParams.get(PRICE_TO_SEARCH_PARAM);
+      return priceTo
+        ? Number.parseFloat(ski.price) <= Number.parseFloat(priceTo)
+        : true;
+    }
+
+    setFilteredSki(
+      ski
+        .filter(filterCategories)
+        .filter(filterManufacturer)
+        .filter(filterSkill)
+        .filter(filterPriceFrom)
+        .filter(filterPriceTo)
+    );
+  }, [ski, searchParams]);
+
   return (
     <Grid
       container
@@ -29,9 +89,9 @@ function Catalog({ ski }) {
           bgcolor: "background.paper",
         }}
       >
-        <SkiFilter />
+        <SkiFilter setSearchParams={setSearchParams} />
       </Grid>
-      <ProductAlbumPaged products={ski} />
+      <ProductAlbumPaged products={filteredSki} />
     </Grid>
   );
 }

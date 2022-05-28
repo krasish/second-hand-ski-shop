@@ -52,7 +52,7 @@ function ProductAlbum({ products, smallestCardSize = 2 }) {
                 <CardMedia
                   component="img"
                   width="100%"
-                  height="280"
+                  height={smallestCardSize * 140}
                   image={
                     p.photos.length
                       ? p.photos[0]
