@@ -2,6 +2,7 @@
   "ski": [
     {
       "id": "c6a5939e-85df-43ab-9668-15b070a5de78",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
       "manufacturer": "Rossignol",
       "description": "Not too bad of a ski",
       "size": 165,
@@ -18,6 +19,7 @@
     },
     {
       "id": "9e8e88f4-86ef-448d-ae80-2b25f76d132b",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
       "manufacturer": "Atomic",
       "description": "Skis for advanced skiers. Not in a good condition",
       "size": 173,
@@ -34,6 +36,7 @@
     },
     {
       "id": "42bca69b-ebc2-4a86-b73d-f68272136469",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
       "manufacturer": "Atomic",
       "description": "A very good choice for intermediate skiers. These skis will help you to improve your skiing.",
       "size": 173,
@@ -54,6 +57,7 @@
     },
     {
       "id": "972f3cd3-62d0-48f4-9801-d69233e1e39b",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
       "manufacturer": "Atomic",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque nulla ut nibh laoreet accumsan. Integer sagittis dolor ac magna semper scelerisque. Etiam eu eros auctor, fringilla neque et, ullamcorper ante. Sed facilisis quis dui ac tempor. Vivamus lacinia elit id justo vestibulum accumsan. Quisque a congue magna. Aenean blandit odio sit amet diam tempor dictum. Donec pulvinar erat sed felis consequat rutrum. Fusce aliquet nisi nibh, nec sollicitudin diam gravida non. Sed nisi augue, facilisis ac sodales viverra, bibendum at mauris. Nunc vehicula tristique tellus, sed feugiat erat consequat eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eget suscipit mauris, elementum sagittis ante. Donec nulla erat, vestibulum et aliquam sit amet, pharetra et quam. In finibus id libero aliquet ornare. Integer nec ex ut libero consectetur sollicitudin.",
       "size": 173,

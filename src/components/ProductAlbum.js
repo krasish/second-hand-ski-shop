@@ -21,7 +21,7 @@ const trimDescription = (description) => {
   return description;
 };
 
-function ProductAlbum({ products, smallestCardSize = 2 }) {
+function ProductAlbum({ products, smallestCardSize = 2, sortFunc }) {
   const navigate = useNavigate();
 
   function handleViewButton(product) {
@@ -35,97 +35,93 @@ function ProductAlbum({ products, smallestCardSize = 2 }) {
       maxWidth="xl"
     >
       <Grid container spacing={3}>
-        {products
-          .sort((a, b) => {
-            return new Date(b.createdAt) - new Date(a.createdAt);
-          })
-          .map((p) => (
-            <Grid item key={p.id} xs={12} sm={6} md={4} lg={smallestCardSize}>
-              <Card
+        {products.sort(sortFunc).map((p) => (
+          <Grid item key={p.id} xs={12} sm={6} md={4} lg={smallestCardSize}>
+            <Card
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                bgcolor: "#a2a3a8",
+              }}
+            >
+              <CardMedia
+                component="img"
+                width="100%"
+                height={smallestCardSize * 140}
+                image={
+                  p.photos.length
+                    ? p.photos[0]
+                    : require("../resources/images/no_images.jpg")
+                }
+                alt={`Picture of ${p.manufacturer} ${p.model}`}
+              />
+              <CardContent
                 sx={{
-                  height: "100%",
                   display: "flex",
-                  flexDirection: "column",
-                  bgcolor: "#a2a3a8",
+                  flexGrow: 1,
+                  flexWrap: "wrap",
+                  justifyContent: "flex-start",
                 }}
               >
-                <CardMedia
-                  component="img"
-                  width="100%"
-                  height={smallestCardSize * 140}
-                  image={
-                    p.photos.length
-                      ? p.photos[0]
-                      : require("../resources/images/no_images.jpg")
-                  }
-                  alt={`Picture of ${p.manufacturer} ${p.model}`}
-                />
-                <CardContent
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
                   sx={{
-                    display: "flex",
                     flexGrow: 1,
-                    flexWrap: "wrap",
-                    justifyContent: "flex-start",
                   }}
                 >
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    sx={{
-                      flexGrow: 1,
-                    }}
-                  >
-                    {p.manufacturer} {p.model}
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="body"
-                    component="p"
-                    sx={{ width: "100%", flexGrow: 1 }}
-                  >
-                    {trimDescription(p.description)}
-                  </Typography>
-                </CardContent>
+                  {p.manufacturer} {p.model}
+                </Typography>
+                <Typography
+                  gutterBottom
+                  variant="body"
+                  component="p"
+                  sx={{ width: "100%", flexGrow: 1 }}
+                >
+                  {trimDescription(p.description)}
+                </Typography>
+              </CardContent>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
                 <Box
                   sx={{
+                    mt: 1,
                     display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
+                    columnGap: 1,
                   }}
                 >
-                  <Box
-                    sx={{
-                      mt: 1,
-                      display: "flex",
-                      columnGap: 1,
-                    }}
-                  >
-                    <PaidIcon fontSize="large" color="success" />
-                    <Typography gutterBottom variant="h6" color="success">
-                      {p.price}
-                    </Typography>
-                  </Box>
-
-                  <CardActions
-                    sx={{
-                      display: "flex",
-                    }}
-                  >
-                    <ButtonGroup
-                      color="primary"
-                      variant="contained"
-                      aria-label="outlined primary button group"
-                    >
-                      <Button size="small" onClick={() => handleViewButton(p)}>
-                        View
-                      </Button>
-                    </ButtonGroup>
-                  </CardActions>
+                  <PaidIcon fontSize="large" color="success" />
+                  <Typography gutterBottom variant="h6" color="success">
+                    {p.price}
+                  </Typography>
                 </Box>
-              </Card>
-            </Grid>
-          ))}
+
+                <CardActions
+                  sx={{
+                    display: "flex",
+                  }}
+                >
+                  <ButtonGroup
+                    color="primary"
+                    variant="contained"
+                    aria-label="outlined primary button group"
+                  >
+                    <Button size="small" onClick={() => handleViewButton(p)}>
+                      View
+                    </Button>
+                  </ButtonGroup>
+                </CardActions>
+              </Box>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );

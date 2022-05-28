@@ -5,7 +5,7 @@ import theme from "./theme.js";
 import Home from "./pages/Home.js";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./components/NotFound.js";
-import Catalog from "./pages/Catalog.js";
+import CatalogSki from "./pages/CatalogSki";
 import Baseline from "./components/Baseline.js";
 import Product from "./pages/Product.js";
 import ApiClient from "./service/api-client.js";
@@ -78,7 +78,7 @@ function App() {
                 path="/sign-in"
                 element={<SignIn onSignIn={setUserContext} />}
               />
-              <Route path="/catalog-ski" element={<Catalog ski={ski} />} />
+              <Route path="/catalog-ski" element={<CatalogSki ski={ski} />} />
               <Route
                 path="/catalog-ski/:skiId"
                 element={<Product setErrors={setErrors} />}

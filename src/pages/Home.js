@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import ProductAlbum from "../components/ProductAlbum";
 import { useNavigate } from "react-router-dom";
 import RequireNoAuth from "../components/RequireNoAuth";
+import { sortByDateAsc } from "../model/sort";
 
 function Home({ products }) {
   const navigate = useNavigate();
@@ -87,13 +88,11 @@ function Home({ products }) {
           >
             Latest products
           </Typography>
-          <ProductAlbum products={products} />
+          <ProductAlbum products={products} sortFunc={sortByDateAsc} />
         </Container>
       </Box>
     </main>
   );
 }
-
-Home.propTypes = {};
 
 export default Home;

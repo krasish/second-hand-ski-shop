@@ -8,10 +8,12 @@ import {
   MANUFACTURER_SEARCH_PARAM,
   PRICE_FROM_SEARCH_PARAM,
   PRICE_TO_SEARCH_PARAM,
+  SIZE_FROM_SEARCH_PARAM,
+  SIZE_TO_SEARCH_PARAM,
   SKILL_SEARCH_PARAM,
 } from "../model/search-params";
 
-function Catalog({ ski }) {
+function CatalogSki({ ski }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredSki, setFilteredSki] = useState([]);
 
@@ -54,6 +56,20 @@ function Catalog({ ski }) {
         : true;
     }
 
+    function filterSizeFrom(ski) {
+      const sizeFrom = searchParams.get(SIZE_FROM_SEARCH_PARAM);
+      return sizeFrom
+        ? Number.parseFloat(ski.size) >= Number.parseFloat(sizeFrom)
+        : true;
+    }
+
+    function filterSizeTo(ski) {
+      const sizeTo = searchParams.get(SIZE_TO_SEARCH_PARAM);
+      return sizeTo
+        ? Number.parseFloat(ski.size) <= Number.parseFloat(sizeTo)
+        : true;
+    }
+
     setFilteredSki(
       ski
         .filter(filterCategories)
@@ -61,6 +77,8 @@ function Catalog({ ski }) {
         .filter(filterSkill)
         .filter(filterPriceFrom)
         .filter(filterPriceTo)
+        .filter(filterSizeFrom)
+        .filter(filterSizeTo)
     );
   }, [ski, searchParams]);
 
@@ -89,11 +107,14 @@ function Catalog({ ski }) {
           bgcolor: "background.paper",
         }}
       >
-        <SkiFilter setSearchParams={setSearchParams} />
+        <SkiFilter
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
       </Grid>
       <ProductAlbumPaged products={filteredSki} />
     </Grid>
   );
 }
 
-export default Catalog;
+export default CatalogSki;
