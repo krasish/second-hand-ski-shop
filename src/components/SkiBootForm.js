@@ -21,6 +21,7 @@ import {
 
 export const SKI_BOOT_MANUFACTURERS = [
   "Atomic",
+  "Dahu",
   "Dalbello",
   "Dolomite",
   "Fischer",

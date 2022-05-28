@@ -15,6 +15,8 @@ import UserContext from "./components/UserContext";
 import AddProduct from "./pages/AddProduct.js";
 import Users from "./pages/Users.js";
 import RequireAuthRedirect from "./components/RequireAuthRedirect";
+import CatalogSkiBoots from "./pages/CatalogSkiBoots.js";
+import { sortByDateAsc } from "./model/sort.js";
 
 function App() {
   const [ski, setSki] = useState([]);
@@ -71,7 +73,13 @@ function App() {
             >
               <Route
                 index
-                element={<Home products={[...ski, ...boots]} />}
+                element={
+                  <Home
+                    products={[...ski, ...boots]
+                      .sort(sortByDateAsc)
+                      .slice(0, 6)}
+                  />
+                }
               ></Route>
               <Route path="/sign-up" element={<SignUp />} />
               <Route
@@ -82,6 +90,16 @@ function App() {
               <Route
                 path="/catalog-ski/:skiId"
                 element={<Product setErrors={setErrors} />}
+              />
+              <Route
+                path="/catalog-ski-boots"
+                element={<CatalogSkiBoots skiBoots={boots} />}
+              />
+              <Route
+                path="/catalog-ski-boots/:skiBootId"
+                element={
+                  <Product setErrors={setErrors} paramName="skiBootId" />
+                }
               />
               <Route
                 path="/users"

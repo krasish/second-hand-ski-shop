@@ -178,6 +178,59 @@
         "https://cdncloudcart.com/16489/products/images/1010/atomic-redster-world-cup-150-image_61a90c7e4f02d_1920x1920.jpeg?1638468788"
       ],
       "createdAt": "Tue May 24 2022 19:19:28 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "089c202d-68ae-410f-8a1e-8e489a049789",
+      "userId": "2cd4f384-8603-49b9-aabb-f50614c601fb",
+      "manufacturer": "Dalbello",
+      "model": "Kyra",
+      "description": "Brand new! ",
+      "size": 24.5,
+      "category": "women",
+      "flexIndex": 80,
+      "year": 2000,
+      "price": 300,
+      "condition": 10,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/602/dalbello-kyra-novi-image_6065b0b5d9c51_1920x1920.jpeg?1617277677"
+      ],
+      "createdAt": "Sat May 28 2022 19:48:55 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "6afb5724-2a9f-4b60-92d9-edc822ee32c0",
+      "userId": "2cd4f384-8603-49b9-aabb-f50614c601fb",
+      "manufacturer": "Nordica",
+      "model": "Little Belle 1",
+      "description": "Final price! Only worn twice during the previous season. ",
+      "size": 25,
+      "category": "kids",
+      "flexIndex": 70,
+      "year": "2021",
+      "price": 80,
+      "condition": 5,
+      "photos": [
+        "https://frankfurt.apollo.olxcdn.com/v1/files/swazrea3njdj-BG/image;s=1000x700",
+        "https://frankfurt.apollo.olxcdn.com/v1/files/ejod1r7nvojr2-BG/image;s=1000x700"
+      ],
+      "createdAt": "Sat May 28 2022 19:54:53 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "abcfa936-1fcb-4aeb-8b72-9e254917a724",
+      "userId": "2cd4f384-8603-49b9-aabb-f50614c601fb",
+      "manufacturer": "Dahu",
+      "model": "MISS SUZIE",
+      "description": "Brand new. Cool style. ",
+      "size": 23.5,
+      "category": "women",
+      "flexIndex": 80,
+      "year": 2000,
+      "price": 300,
+      "condition": 5,
+      "photos": [
+        "https://cdncloudcart.com/16489/products/images/906/dahu-miss-suzie-novi-image_6154c49b0d184_1920x1920.jpeg?1632946086",
+        "https://cdncloudcart.com/16489/products/images/906/dahu-miss-suzie-novi-image_6154c4a560d2d_1920x1920.jpeg?1632946090"
+      ],
+      "createdAt": "Sat May 28 2022 19:59:27 GMT+0300 (Eastern European Summer Time)"
     }
   ],
   "user": [

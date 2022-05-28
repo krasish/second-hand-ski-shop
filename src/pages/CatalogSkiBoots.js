@@ -10,10 +10,10 @@ import {
   PRICE_TO_SEARCH_PARAM,
   SIZE_FROM_SEARCH_PARAM,
   SIZE_TO_SEARCH_PARAM,
-  SKILL_SEARCH_PARAM,
 } from "../model/search-params";
+import { SKI_BOOT_MANUFACTURERS } from "../components/SkiBootForm";
 
-function CatalogSki({ ski }) {
+function CatalogSkiBoots({ skiBoots }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredSki, setFilteredSki] = useState([]);
 
@@ -34,12 +34,6 @@ function CatalogSki({ ski }) {
       return allowedManufacturers
         ? allowedManufacturers.includes(ski.manufacturer)
         : true;
-    }
-
-    function filterSkill(ski) {
-      const skill = searchParams.get(SKILL_SEARCH_PARAM);
-      const allowedSkills = skill ? skill.split(",") : null;
-      return allowedSkills ? allowedSkills.includes(ski.skill) : true;
     }
 
     function filterPriceFrom(ski) {
@@ -71,16 +65,15 @@ function CatalogSki({ ski }) {
     }
 
     setFilteredSki(
-      ski
+      skiBoots
         .filter(filterCategories)
         .filter(filterManufacturer)
-        .filter(filterSkill)
         .filter(filterPriceFrom)
         .filter(filterPriceTo)
         .filter(filterSizeFrom)
         .filter(filterSizeTo)
     );
-  }, [ski, searchParams]);
+  }, [skiBoots, searchParams]);
 
   return (
     <Grid
@@ -107,7 +100,12 @@ function CatalogSki({ ski }) {
           bgcolor: "background.paper",
         }}
       >
-        <Filter searchParams={searchParams} setSearchParams={setSearchParams} />
+        <Filter
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          manufacturerList={SKI_BOOT_MANUFACTURERS}
+          includeSkill={false}
+        />
       </Grid>
       <ProductAlbumPagedSorted
         products={filteredSki}
@@ -118,4 +116,4 @@ function CatalogSki({ ski }) {
   );
 }
 
-export default CatalogSki;
+export default CatalogSkiBoots;

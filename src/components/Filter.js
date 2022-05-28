@@ -1,5 +1,4 @@
 import {
-  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -17,14 +16,18 @@ import {
   PRICE_TO_SEARCH_PARAM,
   SIZE_FROM_SEARCH_PARAM,
   SIZE_TO_SEARCH_PARAM,
+  SKILL_SEARCH_PARAM,
 } from "../model/search-params";
+import { SKILLS } from "../model/skill";
 import { SKI_MANUFACTURERS } from "./SkiForm";
 
-function SkiFilter({
+function Filter({
   minPrice = 0,
   maxPrice = 5000,
   minSize = 20,
   maxSize = 350,
+  includeSkill = true,
+  manufacturerList = SKI_MANUFACTURERS,
   searchParams,
   setSearchParams,
 }) {
@@ -93,6 +96,23 @@ function SkiFilter({
     setSearchParams(searchParams);
   }
 
+  function handleSkillChange(event, value) {
+    const currentSkill = searchParams?.get(SKILL_SEARCH_PARAM)?.split(",");
+
+    let newSkills = currentSkill?.filter((c) => c !== event.target.value);
+    newSkills = newSkills ? newSkills : [];
+    if (value) {
+      newSkills.push(event.target.value);
+    }
+
+    if (newSkills.length) {
+      searchParams.set(SKILL_SEARCH_PARAM, newSkills);
+    } else {
+      searchParams.delete(SKILL_SEARCH_PARAM);
+    }
+    setSearchParams(searchParams);
+  }
+
   return (
     <Grid
       container
@@ -140,7 +160,7 @@ function SkiFilter({
         </Typography>
         <FormControl>
           <FormGroup>
-            {SKI_MANUFACTURERS.map((m) => (
+            {manufacturerList.map((m) => (
               <FormControlLabel
                 key={m}
                 control={
@@ -156,6 +176,32 @@ function SkiFilter({
           </FormGroup>
         </FormControl>
       </Grid>
+
+      {includeSkill && (
+        <Grid xs={12} sx={{ px: 3, mt: 2 }}>
+          <Typography variant="h6" id="price-slider" gutterBottom>
+            Skill
+          </Typography>
+          <FormControl>
+            <FormGroup>
+              {SKILLS.map((s) => (
+                <FormControlLabel
+                  key={s}
+                  control={
+                    <Checkbox
+                      checked={determineChecked(SKILL_SEARCH_PARAM, s)}
+                      onChange={handleSkillChange}
+                      value={s}
+                    />
+                  }
+                  label={s.charAt(0).toUpperCase() + s.slice(1)}
+                />
+              ))}
+            </FormGroup>
+          </FormControl>
+        </Grid>
+      )}
+
       <Grid item xs={12} sx={{ px: 3 }}>
         <Typography variant="h6" id="price-slider" gutterBottom>
           Size
@@ -187,4 +233,4 @@ function SkiFilter({
   );
 }
 
-export default SkiFilter;
+export default Filter;
