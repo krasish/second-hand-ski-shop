@@ -22,9 +22,9 @@ import { SKI_MANUFACTURERS } from "./SkiForm";
 
 function SkiFilter({
   minPrice = 0,
-  maxPrice = 2000,
+  maxPrice = 5000,
   minSize = 20,
-  maxSize = 300,
+  maxSize = 350,
   searchParams,
   setSearchParams,
 }) {

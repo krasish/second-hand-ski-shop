@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SkiFilter from "../components/SkiFilter";
-import ProductAlbumPaged from "../components/ProductAlbumPaged";
+import ProductAlbumPagedSorted from "../components/ProductAlbumPagedSorted";
 import { useSearchParams } from "react-router-dom";
 import {
   CATEGORY_SEARCH_PARAM,
@@ -112,7 +112,7 @@ function CatalogSki({ ski }) {
           setSearchParams={setSearchParams}
         />
       </Grid>
-      <ProductAlbumPaged products={filteredSki} />
+      <ProductAlbumPagedSorted products={filteredSki} />
     </Grid>
   );
 }
