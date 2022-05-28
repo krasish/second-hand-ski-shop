@@ -21,7 +21,7 @@ const trimDescription = (description) => {
   return description;
 };
 
-function ProductAlbum({ products, smallestCardSize = 2, sortFunc }) {
+function ProductAlbum({ products, smallestCardSize = 2 }) {
   const navigate = useNavigate();
 
   function handleViewButton(product) {
@@ -35,7 +35,7 @@ function ProductAlbum({ products, smallestCardSize = 2, sortFunc }) {
       maxWidth="xl"
     >
       <Grid container spacing={3}>
-        {products.sort(sortFunc).map((p) => (
+        {products.map((p) => (
           <Grid item key={p.id} xs={12} sm={6} md={4} lg={smallestCardSize}>
             <Card
               sx={{

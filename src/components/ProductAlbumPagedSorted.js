@@ -99,12 +99,10 @@ function ProductAlbumPagedSorted({
         </NativeSelect>
       </Box>
       <ProductAlbum
-        products={products?.slice(
-          elementsPerPage * (page - 1),
-          elementsPerPage * page
-        )}
+        products={products
+          ?.sort(sortFunc)
+          .slice(elementsPerPage * (page - 1), elementsPerPage * page)}
         smallestCardSize={3}
-        sortFunc={sortFunc}
       ></ProductAlbum>
       <Box py={2}>
         <Stack spacing={2}>

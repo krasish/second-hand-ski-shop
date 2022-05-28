@@ -88,7 +88,7 @@ function Home({ products }) {
           >
             Latest products
           </Typography>
-          <ProductAlbum products={products} sortFunc={sortByDateAsc} />
+          <ProductAlbum products={products?.sort(sortByDateAsc)} />
         </Container>
       </Box>
     </main>
