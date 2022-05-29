@@ -35,6 +35,12 @@ class ApiClient {
     return this.handleResponse(this.POSTRequestFunction(USERS_PATH, user));
   }
 
+  async editUser(user) {
+    return this.handleResponse(
+      this.PUTRequestFunction(`${USERS_PATH}/${user.id}`, user)
+    );
+  }
+
   async login(username, password) {
     try {
       const users = await this.handleResponse(async () =>
@@ -134,6 +140,19 @@ class ApiClient {
     return async () => {
       fetch(`${this.baseApiUrl}${path}`, {
         method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+    };
+  }
+
+  //utils
+  PUTRequestFunction(path, body) {
+    return async () => {
+      fetch(`${this.baseApiUrl}${path}`, {
+        method: "PUT",
         body: JSON.stringify(body),
         headers: {
           "Content-type": "application/json; charset=UTF-8",

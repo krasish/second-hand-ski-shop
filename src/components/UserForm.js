@@ -49,33 +49,63 @@ const [MALE_DEFAULT_IMAGE, FEMALE_DEFAULT_IMAGE] = [
   "https://s3.eu-central-1.amazonaws.com/uploads.mangoweb.org/shared-prod/visegradfund.org/uploads/2021/03/depositphotos_121233300-stock-illustration-female-default-avatar-gray-profile.jpg",
 ];
 
-function UserForm() {
+const defaultInitialValues = {
+  email: "",
+  firstName: "",
+  lastName: "",
+  password: "",
+  gender: GENDERS[GENDER_MALE],
+  imageUrl: "",
+  phone: "",
+};
+
+function defaultOnEdit(user) {
+  console.log(`Attempted to edit ${user}`);
+}
+
+function UserForm({
+  initialValues = defaultInitialValues,
+  forEdit = false,
+  onEdit = defaultOnEdit,
+}) {
   const navigate = useNavigate();
+
+  const handleCreateSubmit = async (values) => {
+    const id = crypto.randomUUID();
+    const imageUrl =
+      values.imageUrl?.length > 0
+        ? values.imageUrl
+        : values.gender === GENDERS[GENDER_MALE]
+        ? MALE_DEFAULT_IMAGE
+        : FEMALE_DEFAULT_IMAGE;
+    const user = new User({ id: id, ...values, imageUrl: imageUrl });
+    try {
+      await ApiClient.createUser(user);
+      navigate("/sign-in");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const handleEditSubmit = async (values) => {
+    const user = new User({ ...values });
+    try {
+      await ApiClient.editUser(user);
+      onEdit(user);
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const formik = useFormik({
-    initialValues: {
-      email: "",
-      firstName: "",
-      lastName: "",
-      password: "",
-      gender: GENDERS[GENDER_MALE],
-      imageUrl: "",
-      phone: "",
-    },
+    initialValues: initialValues,
     validationSchema: schema,
     onSubmit: async (values) => {
-      const id = crypto.randomUUID();
-      const imageUrl =
-        values.imageUrl?.length > 0
-          ? values.imageUrl
-          : values.gender === GENDERS[GENDER_MALE]
-          ? MALE_DEFAULT_IMAGE
-          : FEMALE_DEFAULT_IMAGE;
-      const user = new User({ id: id, ...values, imageUrl: imageUrl });
-      try {
-        await ApiClient.createUser(user);
-        navigate("/sign-in");
-      } catch (error) {
-        alert(error);
+      if (forEdit) {
+        await handleEditSubmit(values);
+      } else {
+        await handleCreateSubmit(values);
       }
     },
   });
@@ -208,7 +238,7 @@ function UserForm() {
 
       <Grid item xs={12}>
         <Button variant="contained" fullWidth type="submit">
-          Sign Up
+          {forEdit ? "Update" : "Sign Up"}
         </Button>
       </Grid>
     </Grid>

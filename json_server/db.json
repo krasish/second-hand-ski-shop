@@ -271,6 +271,19 @@
       "gender": "male",
       "role": "user",
       "active": true
+    },
+    {
+      "id": "0dab9814-f97b-4287-8bee-618b4881bcb7",
+      "email": "2pack@yahoo.com",
+      "firstName": "Tupac",
+      "lastName": "Shakur",
+      "username": "2pac",
+      "password": "h0meWork!",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b5/Tupac_Amaru_Shakur2.jpg",
+      "phone": "+359895540673",
+      "gender": "male",
+      "role": "user",
+      "active": true
     }
   ],
   "review": [

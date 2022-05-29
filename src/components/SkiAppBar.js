@@ -80,9 +80,9 @@ export default function SkiAppBar({ onLogout }) {
 
   const settings = [
     {
-      title: "Profile",
+      title: "Edit Profile",
       action: () => {
-        navigate(`/users/${user?.id}`);
+        navigate(`/edit-user`);
         handleCloseUserMenu();
       },
     },

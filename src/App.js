@@ -17,6 +17,7 @@ import Users from "./pages/Users.js";
 import RequireAuthRedirect from "./components/RequireAuthRedirect";
 import CatalogSkiBoots from "./pages/CatalogSkiBoots.js";
 import { sortByDateAsc } from "./model/sort.js";
+import EditUser from "./pages/EditUser.js";
 
 function App() {
   const [ski, setSki] = useState([]);
@@ -121,7 +122,7 @@ function App() {
               />
 
               <Route
-                path="add-product"
+                path="/add-product"
                 element={
                   <RequireAuthRedirect to="/sign-in">
                     <AddProduct
@@ -131,7 +132,16 @@ function App() {
                   </RequireAuthRedirect>
                 }
               />
+              <Route
+                path="/edit-user"
+                element={
+                  <RequireAuthRedirect to="/sign-in">
+                    <EditUser onEdit={setUserContext} />
+                  </RequireAuthRedirect>
+                }
+              />
             </Route>
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
