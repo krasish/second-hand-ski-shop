@@ -9,7 +9,7 @@ import QuiltedImageList from "../components/QuiltedImageList";
 import UserCardContent from "../components/UserCardContent";
 import ApiClient from "../service/api-client.js";
 
-function Product({ setErrors, paramName = "skiId" }) {
+function Product({ setErrors, paramName = "skiId", fetchProduct }) {
   const params = useParams();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -19,7 +19,7 @@ function Product({ setErrors, paramName = "skiId" }) {
 
   async function fetchEntities() {
     try {
-      const ski = await ApiClient.fetchSkiById(params[paramName]);
+      const ski = await fetchProduct(params[paramName]);
       setSki(ski);
       const user = await ApiClient.fetchUserById(ski.userId);
       setUser(user);

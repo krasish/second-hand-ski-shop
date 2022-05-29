@@ -6,6 +6,26 @@ export const REVIEWS_PATH = "review/";
 
 class ApiClient {
   constructor(baseApiUrl = API_BASE_URL, debugLogs = false) {
+    this.createUser = this.createUser.bind(this);
+    this.login = this.login.bind(this);
+    this.fetchUsers = this.fetchUsers.bind(this);
+    this.fetchUserById = this.fetchUserById.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+    this.createSki = this.createSki.bind(this);
+    this.fetchSkis = this.fetchSkis.bind(this);
+    this.fetchSkiById = this.fetchSkiById.bind(this);
+    this.deleteSki = this.deleteSki.bind(this);
+    this.createBoot = this.createBoot.bind(this);
+    this.fetchBoots = this.fetchBoots.bind(this);
+    this.fetchBootsById = this.fetchBootsById.bind(this);
+    this.deleteBoot = this.deleteBoot.bind(this);
+    this.createReview = this.createReview.bind(this);
+    this.fetchReviews = this.fetchReviews.bind(this);
+    this.deleteReview = this.deleteReview.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
+    this.POSTRequestFunction = this.POSTRequestFunction.bind(this);
+    this.DELETERequestFunction = this.DELETERequestFunction.bind(this);
+
     this.baseApiUrl = baseApiUrl;
     this.debugLogs = debugLogs;
   }
@@ -77,6 +97,12 @@ class ApiClient {
   async fetchBoots() {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_BOOT_PATH}`)
+    );
+  }
+
+  async fetchBootsById(skiBootId) {
+    return this.handleResponse(async () =>
+      fetch(`${this.baseApiUrl}${SKI_BOOT_PATH}${skiBootId}`)
     );
   }
 

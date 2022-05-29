@@ -89,7 +89,12 @@ function App() {
               <Route path="/catalog-ski" element={<CatalogSki ski={ski} />} />
               <Route
                 path="/catalog-ski/:skiId"
-                element={<Product setErrors={setErrors} />}
+                element={
+                  <Product
+                    setErrors={setErrors}
+                    fetchProduct={ApiClient.fetchSkiById}
+                  />
+                }
               />
               <Route
                 path="/catalog-ski-boots"
@@ -98,7 +103,11 @@ function App() {
               <Route
                 path="/catalog-ski-boots/:skiBootId"
                 element={
-                  <Product setErrors={setErrors} paramName="skiBootId" />
+                  <Product
+                    setErrors={setErrors}
+                    paramName="skiBootId"
+                    fetchProduct={ApiClient.fetchBootsById}
+                  />
                 }
               />
               <Route
