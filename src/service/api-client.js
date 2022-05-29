@@ -79,6 +79,12 @@ class ApiClient {
     return this.handleResponse(this.POSTRequestFunction(SKI_PATH, ski));
   }
 
+  async editSki(ski) {
+    return this.handleResponse(
+      this.PUTRequestFunction(`${SKI_PATH}/${ski.id}`, ski)
+    );
+  }
+
   async fetchSkis() {
     return this.handleResponse(async () =>
       fetch(`${this.baseApiUrl}${SKI_PATH}`)
@@ -98,6 +104,12 @@ class ApiClient {
   //SKI-BOOTS
   async createBoot(boot) {
     return this.handleResponse(this.POSTRequestFunction(SKI_BOOT_PATH, boot));
+  }
+
+  async editBoot(boot) {
+    return this.handleResponse(
+      this.PUTRequestFunction(`${SKI_BOOT_PATH}/${boot.id}`, boot)
+    );
   }
 
   async fetchBoots() {

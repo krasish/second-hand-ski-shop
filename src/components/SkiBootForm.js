@@ -156,6 +156,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
           name="model"
           label="Model"
           type="text"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.model}
           defaultValue={formik.initialValues.model}
           onChange={formik.handleChange}
@@ -211,6 +212,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
           name="size"
           label="Size"
           type="number"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.size}
           onChange={formik.handleChange}
           error={formik.touched.size && Boolean(formik.errors.size)}
@@ -225,6 +227,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
           name="flexIndex"
           label="Flex Index"
           type="number"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.flexIndex}
           onChange={formik.handleChange}
           error={formik.touched.flexIndex && Boolean(formik.errors.flexIndex)}
@@ -239,6 +242,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
           name="price"
           label="Price"
           type="number"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.price}
           onChange={formik.handleChange}
           error={formik.touched.price && Boolean(formik.errors.price)}
@@ -269,6 +273,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
           label="Description"
           type="description"
           id="description"
+          InputLabelProps={{ shrink: true }}
           multiline={true}
           minRows={8}
           defaultValue={formik.initialValues.description}

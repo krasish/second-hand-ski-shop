@@ -88,33 +88,59 @@ export const SkiSchema = yup.object({
     .lessThan(11, "Condition can be on scale from 1 to 10"),
 });
 
-function SkiForm({ setErrors, updateProducts }) {
+const defaultInitialValues = {
+  manufacturer: SKI_MANUFACTURERS[0],
+  model: "",
+  description: "",
+  size: 150,
+  year: 2000,
+  skill: SKILLS[SKILL_BEGINNER],
+  price: 0.0,
+  condition: 5,
+  category: CATEGORIES[CATEGORY_MEN],
+  photos: [],
+};
+
+function SkiForm({
+  initialValues = defaultInitialValues,
+  forEdit = false,
+  setErrors,
+  updateProducts,
+}) {
   const user = useContext(UserContext);
   const navigate = useNavigate();
+  const handleCreateSubmit = async (values) => {
+    const id = crypto.randomUUID();
+    const ski = new Ski({ ...values, id: id, userId: user.id });
+    try {
+      await ApiClient.createSki(ski);
+      await updateProducts();
+      navigate("/catalog-ski");
+    } catch (error) {
+      setErrors([error]);
+    }
+  };
+
+  const handleEditSubmit = async (values) => {
+    const ski = new Ski({ ...values, userId: user.id });
+    try {
+      await ApiClient.editSki(ski);
+      await updateProducts();
+      navigate("/");
+    } catch (error) {
+      setErrors([error]);
+    }
+  };
 
   const formik = useFormik({
-    initialValues: {
-      manufacturer: SKI_MANUFACTURERS[0],
-      model: "",
-      description: "",
-      size: 150,
-      year: 2000,
-      skill: SKILLS[SKILL_BEGINNER],
-      price: 0.0,
-      condition: 5,
-      category: CATEGORIES[CATEGORY_MEN],
-      photos: [],
-    },
+    initialValues: initialValues,
     validationSchema: SkiSchema,
+    enableReinitialize: true,
     onSubmit: async (values) => {
-      const id = crypto.randomUUID();
-      const ski = new Ski({ id: id, userId: user.id, ...values });
-      try {
-        await ApiClient.createSki(ski);
-        await updateProducts();
-        navigate("/catalog-ski");
-      } catch (error) {
-        setErrors([error]);
+      if (forEdit) {
+        await handleEditSubmit(values);
+      } else {
+        await handleCreateSubmit(values);
       }
     },
   });
@@ -162,6 +188,7 @@ function SkiForm({ setErrors, updateProducts }) {
           name="model"
           label="Model"
           type="text"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.model}
           defaultValue={formik.initialValues.model}
           onChange={formik.handleChange}
@@ -239,6 +266,7 @@ function SkiForm({ setErrors, updateProducts }) {
           name="size"
           label="Size"
           type="number"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.size}
           onChange={formik.handleChange}
           error={formik.touched.size && Boolean(formik.errors.size)}
@@ -254,6 +282,7 @@ function SkiForm({ setErrors, updateProducts }) {
           name="price"
           label="Price"
           type="number"
+          InputLabelProps={{ shrink: true }}
           value={formik.values.price}
           onChange={formik.handleChange}
           error={formik.touched.price && Boolean(formik.errors.price)}
@@ -284,6 +313,7 @@ function SkiForm({ setErrors, updateProducts }) {
           label="Description"
           type="description"
           id="description"
+          InputLabelProps={{ shrink: true }}
           multiline={true}
           minRows={8}
           defaultValue={formik.initialValues.description}
@@ -312,6 +342,7 @@ function SkiForm({ setErrors, updateProducts }) {
                 variant="outlined"
                 label={option}
                 color="secondary"
+                key={index}
                 {...getTagProps({ index })}
               />
             ))

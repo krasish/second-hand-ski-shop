@@ -18,6 +18,8 @@ import RequireAuthRedirect from "./components/RequireAuthRedirect";
 import CatalogSkiBoots from "./pages/CatalogSkiBoots.js";
 import { sortByDateAsc } from "./model/sort.js";
 import EditUser from "./pages/EditUser.js";
+import EditSki from "./pages/EditSki.js";
+import EditSkiBoots from "./pages/EditSkiBoots.js";
 
 function App() {
   const [ski, setSki] = useState([]);
@@ -158,6 +160,22 @@ function App() {
                 element={
                   <RequireAuthRedirect to="/sign-in">
                     <EditUser onEdit={setUserContext} />
+                  </RequireAuthRedirect>
+                }
+              />
+              <Route
+                path="/edit-ski/:skiId"
+                element={
+                  <RequireAuthRedirect to="/sign-in">
+                    <EditSki onEdit={fetchSkis} />
+                  </RequireAuthRedirect>
+                }
+              />
+              <Route
+                path="/edit-ski-boots/:skiBootId"
+                element={
+                  <RequireAuthRedirect to="/sign-in">
+                    <EditSkiBoots onEdit={fetchBoots} />
                   </RequireAuthRedirect>
                 }
               />
