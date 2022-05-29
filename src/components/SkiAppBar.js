@@ -190,6 +190,17 @@ export default function SkiAppBar({ onLogout }) {
               >
                 Add product
               </Button>
+              <Button
+                sx={{
+                  ml: 1,
+                  backgroundColor: "cyan",
+                  color: "black",
+                  ":hover": { color: "white", background: "blue" },
+                }}
+                onClick={handleToolbarButtonClick}
+              >
+                My products
+              </Button>
             </RequireAuth>
           </Box>
           <UserContext.Consumer>

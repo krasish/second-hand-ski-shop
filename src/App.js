@@ -89,7 +89,22 @@ function App() {
                     updateProducts={updateProducts}
                   />
                 }
-              ></Route>
+              />
+              <Route
+                path="/my-products"
+                element={
+                  <RequireAuthRedirect to="/sign-in">
+                    <Home
+                      products={[...ski, ...boots]
+                        .sort(sortByDateAsc)
+                        .filter((p) => p.userId === user?.id)}
+                      setErrors={setErrors}
+                      updateProducts={updateProducts}
+                      heading="My products"
+                    />
+                  </RequireAuthRedirect>
+                }
+              />
               <Route path="/sign-up" element={<SignUp />} />
               <Route
                 path="/sign-in"

@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 import RequireNoAuth from "../components/RequireNoAuth";
 import { sortByDateAsc } from "../model/sort";
 
-function Home({ products, setErrors, updateProducts }) {
+function Home({
+  products,
+  setErrors,
+  updateProducts,
+  heading = "Latest products",
+}) {
   const navigate = useNavigate();
 
   const handleToolbarButtonClick = (e) => {
@@ -23,7 +28,7 @@ function Home({ products, setErrors, updateProducts }) {
         sx={{
           bgcolor: "background.default",
           pt: 12,
-          pb: 38,
+          pb: 80,
         }}
       >
         <RequireNoAuth>
@@ -86,7 +91,7 @@ function Home({ products, setErrors, updateProducts }) {
             }}
             gutterBottom
           >
-            Latest products
+            {heading}
           </Typography>
           <ProductAlbum
             products={products?.sort(sortByDateAsc)}
