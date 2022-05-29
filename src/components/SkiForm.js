@@ -111,7 +111,7 @@ function SkiForm({ setErrors, updateProducts }) {
       const ski = new Ski({ id: id, userId: user.id, ...values });
       try {
         await ApiClient.createSki(ski);
-        updateProducts();
+        await updateProducts();
         navigate("/catalog-ski");
       } catch (error) {
         setErrors([error]);

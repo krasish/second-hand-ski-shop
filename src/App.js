@@ -78,7 +78,9 @@ function App() {
                   <Home
                     products={[...ski, ...boots]
                       .sort(sortByDateAsc)
-                      .slice(0, 6)}
+                      .slice(0, 8)}
+                    setErrors={setErrors}
+                    updateProducts={updateProducts}
                   />
                 }
               ></Route>
@@ -87,7 +89,16 @@ function App() {
                 path="/sign-in"
                 element={<SignIn onSignIn={setUserContext} />}
               />
-              <Route path="/catalog-ski" element={<CatalogSki ski={ski} />} />
+              <Route
+                path="/catalog-ski"
+                element={
+                  <CatalogSki
+                    ski={ski}
+                    updateProducts={fetchSkis}
+                    setErrors={setErrors}
+                  />
+                }
+              />
               <Route
                 path="/catalog-ski/:skiId"
                 element={
@@ -99,7 +110,13 @@ function App() {
               />
               <Route
                 path="/catalog-ski-boots"
-                element={<CatalogSkiBoots skiBoots={boots} />}
+                element={
+                  <CatalogSkiBoots
+                    skiBoots={boots}
+                    updateProducts={fetchBoots}
+                    setErrors={setErrors}
+                  />
+                }
               />
               <Route
                 path="/catalog-ski-boots/:skiBootId"

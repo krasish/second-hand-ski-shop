@@ -13,7 +13,7 @@ import {
 } from "../model/search-params";
 import { SKI_BOOT_MANUFACTURERS } from "../components/SkiBootForm";
 
-function CatalogSkiBoots({ skiBoots }) {
+function CatalogSkiBoots({ skiBoots, setErrors, updateProducts }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredSki, setFilteredSki] = useState([]);
 
@@ -111,6 +111,8 @@ function CatalogSkiBoots({ skiBoots }) {
         products={filteredSki}
         elementsPerPage={8}
         heading="Ski Boots"
+        setErrors={setErrors}
+        updateProducts={updateProducts}
       />
     </Grid>
   );

@@ -13,6 +13,8 @@ import { Box } from "@mui/system";
 import PaidIcon from "@mui/icons-material/Paid";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import RequireAuth from "./RequireAuth";
+import ApiClient from "../service/api-client";
 
 const trimDescription = (description) => {
   if (description.length > 150) {
@@ -21,12 +23,35 @@ const trimDescription = (description) => {
   return description;
 };
 
-function ProductAlbum({ products, smallestCardSize = 2 }) {
+function ProductAlbum({
+  products,
+  smallestCardSize = 2,
+  setErrors,
+  updateProducts,
+}) {
   const navigate = useNavigate();
 
   function handleViewButton(product) {
     const toPrefix = product.skill ? "/catalog-ski/" : "/catalog-ski-boots/";
     navigate(`${toPrefix}${product.id}`);
+  }
+
+  function handleEditButton(product) {
+    const toPrefix = product.skill ? "/edit-ski/" : "/edit-ski-boots/";
+    navigate(`${toPrefix}${product.id}`);
+  }
+
+  async function handleDeleteButton(product) {
+    try {
+      if (product.skill) {
+        await ApiClient.deleteSki(product.id);
+      } else {
+        await ApiClient.deleteBoot(product.id);
+      }
+      await updateProducts();
+    } catch (err) {
+      setErrors([err]);
+    }
   }
 
   return (
@@ -116,6 +141,22 @@ function ProductAlbum({ products, smallestCardSize = 2 }) {
                     <Button size="small" onClick={() => handleViewButton(p)}>
                       View
                     </Button>
+                    <RequireAuth userID={p.userId}>
+                      <Button
+                        size="small"
+                        color="success"
+                        onClick={() => handleEditButton(p)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        size="small"
+                        color="error"
+                        onClick={() => handleDeleteButton(p)}
+                      >
+                        Delete
+                      </Button>
+                    </RequireAuth>
                   </ButtonGroup>
                 </CardActions>
               </Box>

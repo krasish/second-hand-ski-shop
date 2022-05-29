@@ -105,7 +105,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
       const boot = new Boot({ id: id, userId: user.id, ...values });
       try {
         await ApiClient.createBoot(boot);
-        updateProducts();
+        await updateProducts();
         navigate("/catalog-ski-boots");
       } catch (error) {
         setErrors([error]);

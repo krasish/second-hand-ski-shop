@@ -28,6 +28,8 @@ function ProductAlbumPagedSorted({
   products,
   elementsPerPage = 4,
   heading = "Ski",
+  setErrors,
+  updateProducts,
 }) {
   const [page, setPage] = useState(1);
   const [sortFunc, setSortFunc] = useState(() => sortByDateAsc);
@@ -103,6 +105,8 @@ function ProductAlbumPagedSorted({
           ?.sort(sortFunc)
           .slice(elementsPerPage * (page - 1), elementsPerPage * page)}
         smallestCardSize={3}
+        setErrors={setErrors}
+        updateProducts={updateProducts}
       ></ProductAlbum>
       <Box py={2}>
         <Stack spacing={2}>

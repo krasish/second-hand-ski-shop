@@ -13,7 +13,7 @@ import {
   SKILL_SEARCH_PARAM,
 } from "../model/search-params";
 
-function CatalogSki({ ski }) {
+function CatalogSki({ ski, setErrors, updateProducts }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredSki, setFilteredSki] = useState([]);
 
@@ -112,7 +112,9 @@ function CatalogSki({ ski }) {
       <ProductAlbumPagedSorted
         products={filteredSki}
         elementsPerPage={8}
-        heading="Ski Boots"
+        heading="Ski"
+        setErrors={setErrors}
+        updateProducts={updateProducts}
       />
     </Grid>
   );

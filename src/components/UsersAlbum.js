@@ -104,6 +104,7 @@ export default function UserAlbum({ users, reviews, onUpdate, setErrors }) {
   };
 
   const openViewReviewsModal = (user) => {
+    window.scrollTo(0, 0);
     setModalOpen(true);
     setModalContent(
       <ReviewList reviews={reviews?.filter((r) => r.forUserId === user.id)} />
