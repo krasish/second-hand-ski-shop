@@ -82,33 +82,61 @@ export const SkiSchema = yup.object({
     .lessThan(11, "Condition can be on scale from 1 to 10"),
 });
 
-function SkiBootForm({ setErrors, updateProducts }) {
+const defaultInitialValues = {
+  manufacturer: SKI_BOOT_MANUFACTURERS[0],
+  model: "",
+  description: "",
+  size: 27.5,
+  flexIndex: 100,
+  year: 2000,
+  price: 0.0,
+  condition: 5,
+  category: CATEGORIES[CATEGORY_MEN],
+  photos: [],
+};
+
+function SkiBootForm({
+  initialValues = defaultInitialValues,
+  forEdit = false,
+  setErrors,
+  updateProducts,
+}) {
   const user = useContext(UserContext);
   const navigate = useNavigate();
+  console.log(initialValues);
+
+  const handleCreateSubmit = async (values) => {
+    const id = crypto.randomUUID();
+    const boot = new Boot({ id: id, userId: user.id, ...values });
+    try {
+      await ApiClient.createBoot(boot);
+      await updateProducts();
+      navigate("/catalog-ski-boots");
+    } catch (error) {
+      setErrors([error]);
+    }
+  };
+
+  const handleEditSubmit = async (values) => {
+    const boot = new Boot({ ...values, userId: user.id });
+    try {
+      await ApiClient.editBoot(boot);
+      await updateProducts();
+      navigate("/");
+    } catch (error) {
+      setErrors([error]);
+    }
+  };
 
   const formik = useFormik({
-    initialValues: {
-      manufacturer: SKI_BOOT_MANUFACTURERS[0],
-      model: "",
-      description: "",
-      size: 27.5,
-      flexIndex: 100,
-      year: 2000,
-      price: 0.0,
-      condition: 5,
-      category: CATEGORIES[CATEGORY_MEN],
-      photos: [],
-    },
+    initialValues: initialValues,
     validationSchema: SkiSchema,
+    enableReinitialize: true,
     onSubmit: async (values) => {
-      const id = crypto.randomUUID();
-      const boot = new Boot({ id: id, userId: user.id, ...values });
-      try {
-        await ApiClient.createBoot(boot);
-        await updateProducts();
-        navigate("/catalog-ski-boots");
-      } catch (error) {
-        setErrors([error]);
+      if (forEdit) {
+        await handleEditSubmit(values);
+      } else {
+        await handleCreateSubmit(values);
       }
     },
   });
@@ -318,7 +346,7 @@ function SkiBootForm({ setErrors, updateProducts }) {
       </Grid>
       <Grid item xs={12}>
         <Button color="success" variant="contained" fullWidth type="submit">
-          Publish
+          {forEdit ? "Edit" : "Publish"}
         </Button>
       </Grid>
     </Grid>

@@ -231,6 +231,21 @@
         "https://cdncloudcart.com/16489/products/images/906/dahu-miss-suzie-novi-image_6154c4a560d2d_1920x1920.jpeg?1632946090"
       ],
       "createdAt": "Sat May 28 2022 19:59:27 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "9e2d4092-8ef1-430c-bc80-603f5f8a21be",
+      "userId": "a36292dc-38db-4fa4-9030-63c5f6e45ca7",
+      "manufacturer": "Atomic",
+      "model": "sss",
+      "description": "sssssss33",
+      "size": 27.5,
+      "category": "men",
+      "flexIndex": 100,
+      "year": 2000,
+      "price": 1,
+      "condition": 5,
+      "photos": [],
+      "createdAt": "Sun May 29 2022 13:53:06 GMT+0300 (Eastern European Summer Time)"
     }
   ],
   "user": [

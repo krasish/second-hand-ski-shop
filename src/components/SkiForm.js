@@ -109,6 +109,7 @@ function SkiForm({
 }) {
   const user = useContext(UserContext);
   const navigate = useNavigate();
+
   const handleCreateSubmit = async (values) => {
     const id = crypto.randomUUID();
     const ski = new Ski({ ...values, id: id, userId: user.id });
@@ -359,7 +360,7 @@ function SkiForm({
       </Grid>
       <Grid item xs={12}>
         <Button color="success" variant="contained" fullWidth type="submit">
-          Publish
+          {forEdit ? "Edit" : "Publish"}
         </Button>
       </Grid>
     </Grid>
