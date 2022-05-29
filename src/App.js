@@ -27,6 +27,8 @@ function App() {
   const [user, setUser] = useState(null);
 
   async function fetchSkis() {
+    //TODO: Remove when backend is implmeented
+    await new Promise((r) => setTimeout(r, 100));
     try {
       const response = await ApiClient.fetchSkis();
       setSki(response);
@@ -36,6 +38,8 @@ function App() {
   }
 
   async function fetchBoots() {
+    //TODO: Remove when backend is implmeented
+    await new Promise((r) => setTimeout(r, 100));
     try {
       const response = await ApiClient.fetchBoots();
       setBoots(response);

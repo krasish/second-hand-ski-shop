@@ -9,6 +9,9 @@ function Users({ setErrors, updateProducts }) {
   const [reviews, setReviews] = useState([]);
 
   const updateUsersAndReviews = async () => {
+    //TODO: Remove when backend is implmeented
+    await new Promise((r) => setTimeout(r, 100));
+
     try {
       const newUsers = await ApiClient.fetchUsers();
       setUsers(newUsers);
