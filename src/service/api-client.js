@@ -24,6 +24,7 @@ class ApiClient {
     this.deleteReview = this.deleteReview.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.POSTRequestFunction = this.POSTRequestFunction.bind(this);
+    this.PUTRequestFunction = this.PUTRequestFunction.bind(this);
     this.DELETERequestFunction = this.DELETERequestFunction.bind(this);
 
     this.baseApiUrl = baseApiUrl;
@@ -160,7 +161,6 @@ class ApiClient {
     };
   }
 
-  //utils
   PUTRequestFunction(path, body) {
     return async () => {
       fetch(`${this.baseApiUrl}${path}`, {
